@@ -29,13 +29,19 @@ hur ni skriver commit-meddelanden
 Ikoner, kort och koncist.
 
 hur ofta ni gör commits
+När något är färdigställt.
 
 hur, när och vem gör code reviews/merges - när får man merge:a in i branchen? (föreslår att ni inte väljer "när du är klar", utan ni bör testa/kontrollera att det även fungerar på någon annans dator)
+Till att börja med på videomöten för att lära oss, sedan utvärdera och se vad som funkar bäst.
 
 hur ni hanterar att göra-listan/backlogen
+Ta upp på möten, Kolla om någon är klar och kan gå vidare och om någon har mycket att göra och behöver avlastning.
 
 hur er tidsplan ser ut, vad ni har för milstolpar och hur ni hanterar om ni märker att ni hamnar efter/före i planeringen
+Vi försöker följa tidsplanen från kurswebben. Hamnar vi efter så tar vi upp det på mötet och ser om någon behöver hjälp eller om vi kan förenkla arbetet.
 
 När ni fått ordning på ovan för att säkerställa ett bra grupparbete under fyra veckor, så gör var och en, en commit till denna fil med sin underskrift.
 
-Halloj
+Underskrift:
+
+Nikolaj Nowicki, Evelina Norlin, Jesper Eriksson
