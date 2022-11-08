@@ -1,48 +1,171 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
     <title>Document</title>
-</head>
+  </head>
 
-<body>
-
+  <body>
     <!-- Evelina   -->
 
-    <section>
-
-    </section>
-
-
+    <section></section>
 
     <!-- Nikolaj -->
 
-
-    <section>
-
-    </section>
-
+    <section></section>
 
     <!-- Jesper -->
 
-
     <section class="thirdPageCheckoutForm">
-        <section class="Checkout">
-            kassan
-            button gå vidare (visas bara i mobil)
-        </section>
+      <section class="checkOut">
+        <h4>
+          Kungvagn
+        </h4>
+        <div class="checkOutDonut">
+            <img width="50px" src="https://images.squarespace-cdn.com/content/v1/5c6467680cf57d95a64743db/1600373199463-TV3ZNPN3RVQ8GR8GZE85/p.jpeg?format=100w">
+            <p>Munknamn</p>
+            <input type="number"></input>
+            <p>styckpris</p>
+            <p>delsumma</p>
+            <i>X</i>
+        </div>
 
-        <section class="userForm">
-            input form
-            button klar
-        </section>
+        <div class="checkOutDonut">
+            <img width="50px" src="https://images.squarespace-cdn.com/content/v1/5c6467680cf57d95a64743db/1600373199463-TV3ZNPN3RVQ8GR8GZE85/p.jpeg?format=100w">
+            <p>Munknamn</p>
+            <input type="number"></input>
+            <p>styckpris</p>
+            <p>delsumma</p>
+            <i>X</i>
+        </div>
+
+        <div class="checkOutDonut">
+            <img width="50px" src="https://images.squarespace-cdn.com/content/v1/5c6467680cf57d95a64743db/1600373199463-TV3ZNPN3RVQ8GR8GZE85/p.jpeg?format=100w">
+            <p>Munknamn</p>
+            <input type="number"></input>
+            <p>styckpris</p>
+            <p>delsumma</p>
+            <i>X</i>
+        </div>
+
+        <h4>
+            Totalpris 100kr
+        </h4>
+
+        <button class="btn">Fortsätt till..</button>
+      </section>
+
+      <section class="userForm">
+        <form action="#">
+          <div class="row">
+            <div class="col-50">
+              <h3>Betalinformation</h3>
+              <label for="fname">Förnamn</label>
+              <input
+                type="text"
+                id="fname"
+                name="firstname"
+                placeholder="Hung"
+              />
+              <label for="lname">Efternamn</label>
+              <input
+                type="text"
+                id="lname"
+                name="lastname"
+                placeholder="Rigg"
+              />
+              <label for="email">Epost</label>
+              <input
+                type="text"
+                id="email"
+                name="email"
+                placeholder="skicka@epost.se"
+              />
+              <label for="adr">Adress (gata)</label>
+              <input
+                type="text"
+                id="adr"
+                name="address"
+                placeholder="Givmunkar 12B"
+              />
+
+              <div class="row">
+                <div class="col-50">
+                  <label for="city">Ort</label>
+                  <input
+                    type="text"
+                    id="city"
+                    name="city"
+                    placeholder="Munkfors"
+                  />
+                </div>
+                <div class="col-50">
+                  <label for="zip">Postnr</label>
+                  <input type="text" id="zip" name="zip" placeholder="13337" />
+                </div>
+              </div>
+            </div>
+
+            <div class="col-50">
+              <h3>Betalmetod</h3>
+
+              <label for="paymentMethod">Välj betalmetod:</label>
+              <select id="paymentMethod" name="paymentMethod">
+                <option value="kort">Kort</option>
+                <option value="faktura">Faktura</option>
+              </select>
+              <label for="cname">Namn på kortet</label>
+              <input
+                type="text"
+                id="cname"
+                name="cardname"
+                placeholder="Hung Rigg"
+              />
+              <label for="ccnum">Betalkorts nummer</label>
+              <input
+                type="text"
+                id="ccnum"
+                name="cardnumber"
+                placeholder="1111-2222-3333-4444"
+              />
+              <label for="expmonth">Utgångs Månad</label>
+              <input
+                type="text"
+                id="expmonth"
+                name="expmonth"
+                placeholder="januari"
+              />
+              <div class="row">
+                <div class="col-50">
+                  <label for="expyear">Utgångs År</label>
+                  <input
+                    type="text"
+                    id="expyear"
+                    name="expyear"
+                    placeholder="1984"
+                  />
+                </div>
+                <div class="col-50">
+                  <label for="cvv">CVV</label>
+                  <input type="text" id="cvv" name="cvv" placeholder="123" />
+                </div>
+              </div>
+            </div>
+          </div>
+          <label>
+            <input type="checkbox" checked="checked" name="sameadr" /> Yes, jag
+            vill prenumerera på nyhetsbrev!
+          </label>
+          <label>
+            <input type="checkbox" name="sameadr" /> Yes, jag godkänner
+            behandling av personuppgifter!
+          </label>
+          <input type="submit" value="Continue to checkout" class="btn" />
+        </form>
+      </section>
     </section>
-
-
-</body>
-
+  </body>
 </html>
