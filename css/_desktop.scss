@@ -2,40 +2,39 @@
 
 
     nav{
-        position: relative; 
+        position: fixed; 
         z-index: 3;
     }
+
     header{
         min-height: 100vh;
         text-align: left;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 90%;
+        margin: 0 auto;
+        padding-top: 100px;
 
         .big--logotype{
-            display: none;
-        }
-        .header--background{
             display: block;
-            position: absolute;
-            z-index: 1;
-            min-width: 100vw;
-            min-height: 100vh;
-            top: 0;
+            width: 700px;
+            height: 350px;
+            margin-top: 70px;
+            margin-left:0;
         }
-        .header--content{
-            position: absolute;
-            z-index: 2;
-            right: 400px;
-            top: 300px;
-        }
+
         h1{
-            font-size: 13rem;
-            line-height: 11rem;
+            font-size: 11rem;
+            line-height: 9rem;
         }
-        .logo--dark,p{
-            position: relative;
-            left: 150px;
+        .logo--dark{
+            // position: relative;
+            // left: 100px;
         }
         a{
             text-align: center;
+            margin: 0;
         }
 
     }
