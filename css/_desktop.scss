@@ -9,10 +9,15 @@
 
     .thirdPageCheckoutForm {  
         flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        padding-right: 25px;
+        padding-left: 25px;
+
     }
 
     .checkOut button {
-        visibility: hidden;
+        display: none;
     }
 
     .row {
