@@ -4,6 +4,37 @@
     nav{
         position: fixed; 
         z-index: 3;
+        display: flex;
+        ul{
+            justify-content: right;
+            li{
+                margin-left: 80px;
+                margin-right: 80px;
+            }
+        }
+
+        img, p{
+            display: block;
+        }
+        img{
+            width: 50px;
+            height: auto;
+        }
+        .logotype{
+            display:flex;
+            align-items: center;
+            p{
+                color: $dark--color;
+                font-family: caraque-melted, sans-serif;
+                font-size: 2rem;
+                span{
+                    color: $accent-color;
+                }
+            }
+            p, img{
+                margin-left: 15px;
+            }
+        }
     }
 
     header{

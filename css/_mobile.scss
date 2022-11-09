@@ -1,6 +1,7 @@
 $light--color: #e8c683;
 $dark--color: #361c1b;
 $middle--color: #6a3d2c;
+$accent-color: #ea5c91;
 
 //general
 
@@ -44,6 +45,9 @@ nav {
   a {
     font-size: 2rem;
     color: $middle--color;
+    &:hover{
+      text-decoration: underline;
+    }
   }
 }
 
@@ -94,6 +98,9 @@ header {
     border: 3px solid $middle--color;
     border-radius: 40px;
     box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.66);
+    &:hover{
+      background: $accent-color;
+    }
   }
 }
 
