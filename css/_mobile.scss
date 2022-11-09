@@ -1,3 +1,101 @@
+
+$light--color: #e8c683;
+$dark--color: #361c1b;
+$middle--color: #6a3d2c;
+
+//general
+
+body{
+    text-align: center;
+    font-family: nunito, sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+img{
+    display: block;
+}
+a{
+    text-decoration: none;
+}
+
+//nav
+
+nav{
+    position: fixed;
+    margin: 0;
+    width: 100vw;
+    height: 60px;
+    background: rgba(232, 198, 131, 0.5);
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
+    img, p{
+        display: none;
+    }
+    ul{
+        padding: 0;
+        width: 90%;
+        margin: 3px auto;
+        opacity: 1;
+        list-style-type: none;
+        display: flex;
+        justify-content: space-between;
+
+    }
+    a{
+        font-size: 2rem;
+        color: $middle--color;
+    }
+}
+
+//header
+header{
+    height: 100vh;
+    padding-top: 80px;
+    .big--logotype{
+        width: 70%;
+        height: auto;
+        margin: 0 auto;
+        margin-bottom: 0;
+    }
+    .header--background{
+        display: none;
+    }
+    h1, p, a{
+        margin-top: 30px;
+        margin-bottom: 0px;
+    }
+    h1{
+        font-family: caraque-melted, sans-serif;
+        font-size: 8rem;
+        line-height: 7rem;
+        text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.66);
+    
+        .logo--light{
+            color: $light--color;
+            -webkit-text-stroke-color: $middle--color;
+            -webkit-text-stroke-width: 1px;
+        }
+        .logo--dark{
+            color: $dark--color;
+        }
+    }
+    a{
+        display: block;
+        font-family: caraque-melted, sans-serif;
+        width: 100px;
+        margin: 0 auto;
+        margin-top: 30px;
+        padding: 15px;
+        background: $light--color;
+        color: $dark--color;
+        font-size: 1.5rem;
+        border: 3px solid $middle--color;
+        border-radius: 40px;
+        box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.66);
+    }
+}
+
 .page-two {
   box-sizing: border-box;
 
@@ -66,3 +164,4 @@ p {
   margin: 0;
   padding-top: 8px;
 }
+

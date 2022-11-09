@@ -1,2 +1,40 @@
 @media screen and (min-width: 1200px) {
+    nav{
+        position: relative; 
+        z-index: 3;
+    }
+    header{
+        min-height: 100vh;
+        text-align: left;
+
+        .big--logotype{
+            display: none;
+        }
+        .header--background{
+            display: block;
+            position: absolute;
+            z-index: 1;
+            min-width: 100vw;
+            min-height: 100vh;
+            top: 0;
+        }
+        .header--content{
+            position: absolute;
+            z-index: 2;
+            right: 400px;
+            top: 300px;
+        }
+        h1{
+            font-size: 13rem;
+            line-height: 11rem;
+        }
+        .logo--dark,p{
+            position: relative;
+            left: 150px;
+        }
+        a{
+            text-align: center;
+        }
+
+    }
 }

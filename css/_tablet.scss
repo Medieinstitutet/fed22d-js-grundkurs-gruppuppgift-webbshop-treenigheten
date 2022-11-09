@@ -1,2 +1,16 @@
 @media screen and (min-width: 700px) {
+    header{
+        text-align: center;
+
+        h1{
+            font-size: 10rem;
+            line-height: 8rem;
+        }
+        p,a{
+            font-size: 2rem;
+        }
+        a{
+            width: 200px;
+        }
+    }
 }
