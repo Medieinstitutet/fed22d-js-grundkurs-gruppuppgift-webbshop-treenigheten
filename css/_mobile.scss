@@ -1,0 +1,68 @@
+.page-two {
+  box-sizing: border-box;
+
+  width: 100%;
+  padding-left: 10%;
+  padding-right: 10%;
+  background-color: rgb(185, 184, 184);
+}
+
+.flex-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.donut-box {
+  flex: 0 1 300px; // No Stretching
+  height: 320px;
+  background-color: #4c4734;
+  margin: 40px 20px 20px 40px;
+  border-radius: 15px;
+  color: black;
+}
+
+.donut-picture {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  border-bottom: 1px solid black;
+  background-color: rgb(235, 251, 255);
+  border-radius: 15px 15px 0px 0px;
+}
+
+.donut-info {
+  //   height: 15%;
+  border-bottom: 1px solid black;
+  font-size: 1.3rem;
+  background-color: #a4694b;
+}
+
+table {
+  margin: 0 auto;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+td {
+  padding-right: 10px;
+}
+
+.donut-amount {
+  display: flex;
+  margin: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  justify-content: space-around;
+  color: white;
+}
+
+button {
+  width: 40px;
+  height: 35px;
+}
+
+p {
+  margin: 0;
+  padding-top: 8px;
+}
