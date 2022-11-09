@@ -1,3 +1,171 @@
+$light--color: #e8c683;
+$dark--color: #361c1b;
+$middle--color: #6a3d2c;
+
+//general
+
+body {
+  text-align: center;
+  font-family: nunito, sans-serif;
+  margin: 0;
+  padding: 0;
+  // overflow: hidden;
+}
+
+img {
+  display: block;
+}
+a {
+  text-decoration: none;
+}
+
+//nav
+
+nav {
+  position: fixed;
+  margin: 0;
+  width: 100vw;
+  height: 60px;
+  background: rgba(232, 198, 131, 0.5);
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
+  img,
+  p {
+    display: none;
+  }
+  ul {
+    padding: 0;
+    width: 90%;
+    margin: 3px auto;
+    opacity: 1;
+    list-style-type: none;
+    display: flex;
+    justify-content: space-between;
+  }
+  a {
+    font-size: 2rem;
+    color: $middle--color;
+  }
+}
+
+//header
+header {
+  height: 100vh;
+  padding-top: 80px;
+  .big--logotype {
+    width: 70%;
+    height: auto;
+    margin: 0 auto;
+    margin-bottom: 0;
+  }
+  .header--background {
+    display: none;
+  }
+  h1,
+  p,
+  a {
+    margin-top: 30px;
+    margin-bottom: 0px;
+  }
+  h1 {
+    font-family: caraque-melted, sans-serif;
+    font-size: 8rem;
+    line-height: 7rem;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.66);
+
+    .logo--light {
+      color: $light--color;
+      -webkit-text-stroke-color: $middle--color;
+      -webkit-text-stroke-width: 1px;
+    }
+    .logo--dark {
+      color: $dark--color;
+    }
+  }
+  a {
+    display: block;
+    font-family: caraque-melted, sans-serif;
+    width: 100px;
+    margin: 0 auto;
+    margin-top: 30px;
+    padding: 15px;
+    background: $light--color;
+    color: $dark--color;
+    font-size: 1.5rem;
+    border: 3px solid $middle--color;
+    border-radius: 40px;
+    box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.66);
+  }
+}
+
+.page-two {
+  box-sizing: border-box;
+
+  width: 100%;
+  padding-left: 10%;
+  padding-right: 10%;
+  background-color: rgb(185, 184, 184);
+}
+
+.flex-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.donut-box {
+  flex: 0 1 300px; // No Stretching
+  height: 320px;
+  background-color: #4c4734;
+  margin: 40px 20px 20px 40px;
+  border-radius: 15px;
+  color: black;
+}
+
+.donut-picture {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  border-bottom: 1px solid black;
+  background-color: rgb(235, 251, 255);
+  border-radius: 15px 15px 0px 0px;
+}
+
+.donut-info {
+  //   height: 15%;
+  border-bottom: 1px solid black;
+  font-size: 1.3rem;
+  background-color: #a4694b;
+}
+
+table {
+  margin: 0 auto;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+td {
+  padding-right: 10px;
+}
+
+.donut-amount {
+  display: flex;
+  margin: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  justify-content: space-around;
+  color: white;
+}
+
+button {
+  width: 40px;
+  height: 35px;
+}
+
+p {
+  margin: 0;
+  padding-top: 8px;
+}
+
 body {
   font-size: 1rem;
   padding: 5px;
@@ -141,4 +309,3 @@ label {
 
 .btn:hover {
   background-color: #45a049;
-}
