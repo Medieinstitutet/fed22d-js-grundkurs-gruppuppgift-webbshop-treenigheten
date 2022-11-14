@@ -63,15 +63,20 @@ function showSelectedPaymentMethod() {
     }
 }
 
+//kopplar funktion till on change vid personnrfältet
 personNummerInput.addEventListener('change', checkPersonNummerIfOk);
 
+//funktion för a validera personnr
 function checkPersonNummerIfOk(){
+    //regEx siffror magi
     let numbers = /^[0-9]+$/;
 
+    //om personnr endast innhåller siffror + är exakt 10 siffror långt
     if (personNummerInput.value.match(numbers) && personNummerInput.value.length == 10){
         console.log('perfekt 10 siffror')
     
     }
+    //gör någon a11y required info att personen gjort fel
     else {
         console.log('skriv 10 siffror please')
     }
