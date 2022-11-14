@@ -1,6 +1,7 @@
 $light--color: #e8c683;
 $dark--color: #361c1b;
 $middle--color: #6a3d2c;
+$accent-color: #ea5c91;
 
 //general
 
@@ -44,6 +45,9 @@ nav {
   a {
     font-size: 2rem;
     color: $middle--color;
+    &:hover{
+      text-decoration: underline;
+    }
   }
 }
 
@@ -84,7 +88,7 @@ header {
   a {
     display: block;
     font-family: caraque-melted, sans-serif;
-    width: 100px;
+    width: 200px;
     margin: 0 auto;
     margin-top: 30px;
     padding: 15px;
@@ -94,6 +98,9 @@ header {
     border: 3px solid $middle--color;
     border-radius: 40px;
     box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.66);
+    &:hover{
+      background: $accent-color;
+    }
   }
 }
 
@@ -168,7 +175,7 @@ p {
 
 body {
   font-size: 1rem;
-  padding: 5px;
+  padding: 0px;
   margin: 0;
 }
 
@@ -179,29 +186,24 @@ body {
 .thirdPageCheckoutForm {
   width: 100%;
   height: 100%;
-
   display: flex;
   justify-content: center;
-
   flex-direction: column;
-
   gap: 25px;
   padding-right: 0px;
   padding-left: 0px;
 }
  
 .checkOut {
-  background-color: purple;
-
+  background-color: $light--color;
+  color: $dark--color;
   display: flex;
   justify-content: center;
   flex-direction: column;
   flex: 50%;
-
   padding: 10px 15px 10px 15px;
-
   border-radius: 25px;
-
+  border: 1px solid $dark--color;
 }
 
 .checkOutDonut {
@@ -238,8 +240,9 @@ body {
 }
 
 .userForm {
-  background-color: red;
-
+  background-color: $light--color;
+  color: $dark--color;
+  border: 1px solid $dark--color;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -296,16 +299,18 @@ label {
 }
 
 .btn {
-  background-color: #04aa6d;
+  background-color: $middle--color;
+  font-family: 'nunito', sans serif;
   color: white;
+  border: 1px solid $dark--color;
   padding: 12px;
   margin: 10px 0;
-  border: none;
   width: 100%;
-  border-radius: 3px;
+  border-radius: 10px;
   cursor: pointer;
   font-size: 17px;
 }
 
 .btn:hover {
   background-color: #45a049;
+}
