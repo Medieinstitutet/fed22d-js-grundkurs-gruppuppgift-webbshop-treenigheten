@@ -301,7 +301,7 @@
     <section class="thirdPageCheckoutForm">
       <section class="checkOut">
         <h4>
-          Kungvagn
+          Kundvagn
         </h4>
 
         <div class="checkOutDonut">
@@ -330,12 +330,17 @@
             <p>36kr</p>
             <i>X</i>
         </div>
+        <form>
+            <label for="rabattkod">Har du en rabattkod?</label>
+            <input type="text" name="rabattkod">
+            <input type="submit" value="Aktivera rabatt" id="rabatt-knapp">
+        </form>
 
         <h4>
-            Totalpris 100kr
+            Totalpris: 100kr
         </h4>
 
-        <button class="btn">Fortsätt till..</button>
+        <button class="btn">Till betalning</button>
       </section>
 
       <section class="userForm">
@@ -447,5 +452,6 @@
         </form>
       </section>
     </section>
+    <script src="evelina.js"></script>
   </body>
 </html>
