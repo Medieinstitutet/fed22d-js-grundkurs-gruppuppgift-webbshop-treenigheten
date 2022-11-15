@@ -48,7 +48,7 @@ const donutArray = [
         picture2: "images/donut-1.png",      // Munk bild 2
         name: 'Socker Munk',                 // Munkens Namn
         price: 25,                           // Munkens Pris
-        quantity: 1,                         // Antal Munkar
+        quantity: 3,                         // Antal Munkar
         category: 'Budget',                  // Munkens Kategori  Budget/Economy/Deluxe
         rating: 1                            // Munkens Rating 1-5 stjärnor
     },
