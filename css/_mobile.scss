@@ -45,7 +45,7 @@ nav {
   a {
     font-size: 2rem;
     color: $middle--color;
-    &:hover{
+    &:hover {
       text-decoration: underline;
     }
   }
@@ -98,86 +98,64 @@ header {
     border: 3px solid $middle--color;
     border-radius: 40px;
     box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.66);
-    &:hover{
+    &:hover {
       background: $accent-color;
     }
   }
 }
 
-.page-two {
-  box-sizing: border-box;
+// NIKOLAJ Start //
 
-  width: 100%;
-  padding-left: 10%;
-  padding-right: 10%;
-  background-color: rgb(185, 184, 184);
-}
+/**
+* ? MunkKort Layout Finns Här
+**/
 
-.flex-wrapper {
-  display: flex;
-  flex-wrap: wrap;
+.shop {
+  display: grid;
+  grid-template-columns: repeat(1, 280px);
+  gap: 30px;
   justify-content: center;
+  margin-bottom: 30px;
 }
 
-.donut-box {
-  flex: 0 1 300px; // No Stretching
-  height: 320px;
-  background-color: #4c4734;
-  margin: 40px 20px 20px 40px;
-  border-radius: 15px;
-  color: black;
+.item {
+  border: 2px solid #131313;
+  border-radius: 6px;
 }
 
-.donut-picture {
+.details {
   display: flex;
+  flex-direction: column;
+  padding: 10px;
+  gap: 10px;
+}
+
+.price-quantity {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.buttons {
   position: relative;
-  justify-content: center;
-  border-bottom: 1px solid black;
-  background-color: rgb(235, 251, 255);
-  border-radius: 15px 15px 0px 0px;
-}
-
-.donut-info {
-  //   height: 15%;
-  border-bottom: 1px solid black;
-  font-size: 1.3rem;
-  background-color: #a4694b;
-}
-
-table {
-  margin: 0 auto;
-  padding-top: 5px;
-  padding-bottom: 5px;
-}
-
-td {
-  padding-right: 10px;
-}
-
-.donut-amount {
   display: flex;
-  margin: 10px;
+  flex-direction: row;
+  gap: 8px;
+  font-size: 36px;
+  margin: auto;
+  padding-bottom: 20px;
   padding-top: 10px;
-  padding-bottom: 10px;
-  justify-content: space-around;
-  color: white;
 }
 
-button {
-  width: 40px;
-  height: 35px;
+.bi-dash-circle-fill {
+  margin-right: 30px;
 }
 
-p {
-  margin: 0;
-  padding-top: 8px;
+.bi-plus-circle-fill {
+  margin-left: 30px;
 }
 
-body {
-  font-size: 1rem;
-  padding: 0px;
-  margin: 0;
-}
+// NIKOLAJ SLUT //
 
 * {
   box-sizing: border-box;
@@ -191,7 +169,7 @@ body {
   padding-right: 0px;
   padding-left: 0px;
 }
- 
+
 .checkOut {
   background-color: $light--color;
   color: $dark--color;
@@ -308,7 +286,7 @@ label {
 
 .btn {
   background-color: $middle--color;
-  font-family: 'nunito', sans serif;
+  font-family: "nunito", sans serif;
   color: white;
   border: 1px solid $dark--color;
   padding: 12px;
