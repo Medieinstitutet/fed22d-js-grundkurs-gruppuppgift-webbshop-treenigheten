@@ -164,8 +164,6 @@ header {
 .thirdPageCheckoutForm {
   width: 100%;
   height: 100%;
-  display: flex;
-  justify-content: center;
   flex-direction: column;
   gap: 25px;
   padding-right: 0px;
@@ -184,39 +182,49 @@ header {
   border: 1px solid $dark--color;
 }
 
-.checkOutDonut {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  grid-template-rows: 1fr;
-  grid-column-gap: 5px;
-
-  justify-items: center;
-  align-items: center;
-
-  margin-bottom: 10px;
+#donuts-kundvagn{
+  text-align: left;
+  h3{
+    text-align: center;
+  }
+  ul{
+    list-style-type: none;
+    display: flex;
+    justify-content: space-evenly;
+    li{
+      img{
+        display: none;
+      }
+    } 
+  }
 }
 
-.checkOutDonut img {
-  grid-area: 1 / 1 / 2 / 2;
+.kundkorg-info{
+  input{
+    margin-bottom: 0;
+  }
+  button{
+    margin-top: 0;
+    margin-bottom: 30px;
+    background-color: $middle--color;
+    font-family: 'nunito', sans serif;
+    color: white;
+    border: 1px solid $dark--color;
+    padding: 12px;
+    width: 100%;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 17px;
+    &:hover {
+      background-color: $dark--color;
+      
+    }
+  }
+  #totalpris{
+    font-size: 1.3rem;
+    line-height: 3rem;
+  }
 }
-.checkOutDonut p {
-  grid-area: 1 / 2 / 2 / 3;
-}
-.checkOutDonut p:nth-child(3) {
-  grid-area: 1 / 3 / 2 / 4;
-}
-
-.checkOutDonut input {
-  grid-area: 1 / 4 / 2 / 5;
-  width: 40px;
-}
-.checkOutDonut p:nth-child(5) {
-  grid-area: 1 / 5 / 2 / 6;
-}
-.checkOutDonut i {
-  grid-area: 1 / 6 / 2 / 7;
-}
-
 .userForm {
   background-color: $light--color;
   color: $dark--color;
@@ -290,5 +298,6 @@ label {
 }
 
 .btn:hover {
-  background-color: #45a049;
+  background-color: $dark--color;
+  
 }
