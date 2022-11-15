@@ -1,13 +1,26 @@
-//kollar så javascripten är kopplad
-console.log("hello")
+//hittar massa olika html element
+const allInputForms = document.querySelectorAll('input'); //hittar alla inputfält (får med några för kassan också)
+const clearFormButton = document.querySelector('#clearFormButton'); //hittar töm forumlär fältet
+const personNummerInput = document.querySelector('#personnum'); //hittar personnummerfältet
+const creditCardInputs = document.querySelectorAll('input[data-operator="creditcard"'); //hittar alla creditkortsfält
+const selectPaymentMethod = document.querySelector('#paymentMethod'); //hittar val av betalmetod
+const formErrorField = document.querySelectorAll('.errorInput'); //hittar fält för felmeddelanden 
+const submitFormButton = document.querySelector('.btn'); //hittar continue to... knappen
+console.log(submitFormButton);
 
-//hittar alla inputfält (får med några för kassan också)
-const allInputForms = document.querySelectorAll('input');
-//hittar töm forumlär fältet
-const clearFormButton = document.querySelector('#clearFormButton');
+//Kopplar funktioner till tryck/changes
+clearFormButton.addEventListener('click', deleteAllFormInput); //kopplar funktion till knapptryck av "rensa formulär"
+selectPaymentMethod.addEventListener('change', showSelectedPaymentMethod); //kopplar funktion till val av betalmetod
+personNummerInput.addEventListener('change', checkPersonNummerIfOk);//kopplar funktion till on change vid personnrfältet
 
-//kopplar funktion till knapptryck av "rensa formulär"
-clearFormButton.addEventListener('click', deleteAllFormInput);
+//boolean variablar för check av formulär
+let validFirstName = false;
+let validLastName = false;
+let validEmail = false;
+let validAddress = false;
+let validCity = false;
+let validZip = false;
+let validPersonnummer = false;
 
 //funktion som loopar igenom alla input och sätter value till 0 = null
 function deleteAllFormInput() {
@@ -17,43 +30,26 @@ function deleteAllFormInput() {
     }
 }
 
-//hittar personnummerfältet
-const personNummerInput = document.querySelector('#personnum');
-
-//hittar alla creditkortsfält
-const creditCardInputs = document.querySelectorAll('input[data-operator="creditcard"');
-
-//hittar val av betalmetod
-const selectPaymentMethod = document.querySelector('#paymentMethod');
-
-//kopplar funktion till val av betalmetod
-selectPaymentMethod.addEventListener('change', showSelectedPaymentMethod);
-
 //funktion som körs då value på selectPaymentMethod ändras.
 //funktionen hittar även "label" till valt inputfält med hjälp av previousElementSibling
 function showSelectedPaymentMethod() {
-    if (selectPaymentMethod.value == 'faktura'){
-        //gömer kreditkort
+    if (selectPaymentMethod.value == 'faktura'){ //gömer kreditkort
         for (i = 0; i < creditCardInputs.length; i++) {
             creditCardInputs[i].hidden = true;
             creditCardInputs[i].previousElementSibling.hidden = true;
         }
-        //gör personnummerfältet synligt och 
-        personNummerInput.previousElementSibling.hidden = false;
+        personNummerInput.previousElementSibling.hidden = false; //gör personnummerfältet synligt och 
         personNummerInput.hidden = false;
     }
-    else if (selectPaymentMethod.value == 'kort'){
-        //döljer personnr
+    else if (selectPaymentMethod.value == 'kort'){ //döljer personnr
         personNummerInput.hidden = true;
-        personNummerInput.previousElementSibling.hidden = true;
-        //gör kreditkort synligt
+        personNummerInput.previousElementSibling.hidden = true; //gör kreditkort synligt
         for (i = 0; i < creditCardInputs.length; i++) {
             creditCardInputs[i].hidden = false;
             creditCardInputs[i].previousElementSibling.hidden = false;
         }        
     }
-    else {
-        //döljer alla betalningsätt
+    else { //döljer alla betalningsätt
         personNummerInput.hidden = true;
         personNummerInput.previousElementSibling.hidden = true;
         for (i = 0; i < creditCardInputs.length; i++) {
@@ -63,23 +59,30 @@ function showSelectedPaymentMethod() {
     }
 }
 
-//kopplar funktion till on change vid personnrfältet
-personNummerInput.addEventListener('change', checkPersonNummerIfOk);
-
 //funktion för a validera personnr
-function checkPersonNummerIfOk(){
-    //regEx siffror magi
-    let numbers = /^[0-9]+$/;
-
+function checkPersonNummerIfOk(){    
+    let numbers = /^[0-9]+$/; //regEx siffror magi
     //om personnr endast innhåller siffror + är exakt 10 siffror långt
     if (personNummerInput.value.match(numbers) && personNummerInput.value.length == 10){
-        console.log('perfekt 10 siffror')
-    
+        validPersonnummer = true;
+        console.log(validPersonnummer)
+        formErrorField[1].textContent = null;
     }
-    //gör någon a11y required info att personen gjort fel
+    else { //a11y = ska fel skrivas i början av formuläret
+        validPersonnummer = false;
+        formErrorField[1].textContent = 'Fel angivet personnummer'
+    }
+    formIsAllValid();
+}
+
+function formIsAllValid() {
+    if (validFirstName && validLastName && validEmail && validAddress && validCity && validZip && validPersonnummer) {
+        submitFormButton.removeAttribute('disabled');
+    }
     else {
-        console.log('skriv 10 siffror please')
+        submitFormButton.removeAttribute('disabled', '');
     }
+
 }
 
     

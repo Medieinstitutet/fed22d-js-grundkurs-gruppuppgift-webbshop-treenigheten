@@ -341,23 +341,25 @@
       <section class="userForm">
         <form>
           <div class="row">
+            
             <div class="col-50">
               <h3>Betalinformation</h3>
-              <label for="fname">Förnamn</label>
+              <div class="errorInput"></div>
+              <label for="fname">Förnamn (required)</label>
               <input
                 type="text"
                 id="fname"
                 name="firstname"
                 placeholder="Hung"
               />
-              <label for="lname">Efternamn</label>
+              <label for="lname">Efternamn (required)</label>
               <input
                 type="text"
                 id="lname"
                 name="lastname"
                 placeholder="Rigg"
               />
-              <label for="email">Epost</label>
+              <label for="email">Epost (required)</label>
               <input
                 type="text"
                 id="email"
@@ -367,7 +369,7 @@
 
               <div class="row">
                 <div class="col-75">
-                    <label for="adr">Adress (gata)</label>
+                    <label for="adr">Gatuadress (required)</label>
                     <input
                         type="text"
                         id="adr"
@@ -388,7 +390,7 @@
 
               <div class="row">
                 <div class="col-50">
-                  <label for="city">Ort</label>
+                  <label for="city">Ort (required)</label>
                   <input
                     type="text"
                     id="city"
@@ -397,7 +399,7 @@
                   />
                 </div>
                 <div class="col-50">
-                  <label for="zip">Postnr</label>
+                  <label for="zip">Postnr (required)</label>
                   <input type="text" id="zip" name="zip" placeholder="13337" />
                 </div>
               </div>
@@ -414,7 +416,8 @@
                 <option value="kort">Kort</option>
                 <option value="faktura">Faktura</option>
               </select>
-              <label hidden="true" for="personnum">Personnummer</label>
+              <div class="errorInput"></div>
+              <label hidden="true" for="personnum">Personnummer (required)</label>
               <input
                 type="text"
                 id="personnum"
