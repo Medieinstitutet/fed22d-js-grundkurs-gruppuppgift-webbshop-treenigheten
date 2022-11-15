@@ -6,21 +6,41 @@ const creditCardInputs = document.querySelectorAll('input[data-operator="creditc
 const selectPaymentMethod = document.querySelector('#paymentMethod'); //hittar val av betalmetod
 const formErrorField = document.querySelectorAll('.errorInput'); //hittar fält för felmeddelanden 
 const submitFormButton = document.querySelector('.btn'); //hittar continue to... knappen
-console.log(submitFormButton);
+const zipcodeInput = document.querySelector('#zip');
+console.dir(zipcodeInput);
+
+//boolean variablar för check av formulär
+//Alla godkända aktiveras knappen submit!
+function checkValidForm() {
+    let validFirstName = 0;
+    let validLastName = null;
+    let validEmail = null;
+    let validAddress = null;
+    let validCity = null;
+    let validZip = zipcodeInput.formNoValidate;
+    let validPersonnummer = personNummerInput.formNoValidate;
+    console.log(validZip)
+    console.log(validPersonnummer)
+    
+    if (validFirstName && validLastName && validEmail && validAddress && validCity && validZip && validPersonnummer) {
+        submitFormButton.removeAttribute('disabled');
+    }
+    else {
+        
+    }
+}
+
+
 
 //Kopplar funktioner till tryck/changes
 clearFormButton.addEventListener('click', deleteAllFormInput); //kopplar funktion till knapptryck av "rensa formulär"
 selectPaymentMethod.addEventListener('change', showSelectedPaymentMethod); //kopplar funktion till val av betalmetod
-personNummerInput.addEventListener('change', checkPersonNummerIfOk);//kopplar funktion till on change vid personnrfältet
-
-//boolean variablar för check av formulär
-let validFirstName = false;
-let validLastName = false;
-let validEmail = false;
-let validAddress = false;
-let validCity = false;
-let validZip = false;
-let validPersonnummer = false;
+personNummerInput.addEventListener('change', () => { 
+    checkNumberIfOk(personNummerInput, 10, 1) //kopplar funktion till on change vid personnrfältet
+} );
+zipcodeInput.addEventListener('change', () => {
+    checkNumberIfOk(zipcodeInput, 5, 0) //kopplar funktion till on change vid zipcode
+} );
 
 //funktion som loopar igenom alla input och sätter value till 0 = null
 function deleteAllFormInput() {
@@ -67,22 +87,28 @@ function checkPersonNummerIfOk(){
         validPersonnummer = true;
         console.log(validPersonnummer)
         formErrorField[1].textContent = null;
+        
     }
     else { //a11y = ska fel skrivas i början av formuläret
         validPersonnummer = false;
         formErrorField[1].textContent = 'Fel angivet personnummer'
     }
-    formIsAllValid();
 }
 
-function formIsAllValid() {
-    if (validFirstName && validLastName && validEmail && validAddress && validCity && validZip && validPersonnummer) {
-        submitFormButton.removeAttribute('disabled');
+//funktion för a validera alla typer av nummer
+//inputField = vilket inputfält vi får datan ifrån
+//numberAmount = antal tecken/siffror som är godkänt
+//errorField = 0 för kontakt info 1 för betalinfo
+const checkNumberIfOk = function(inputField, numberAmount, errorField){    
+     let numbers = /^[0-9]+$/;      
+     if (inputField.value.match(numbers) && inputField.value.length == numberAmount){
+         formErrorField[errorField].textContent = null;
+         inputField.formNoValidate = true; //skickar tillbaka true om det är godkänt
+     }
+     else {
+         formErrorField[errorField].textContent = 'Fel angivet ' + inputField.name;
+         inputField.formNoValidate = false; //skickar tillbaka false om det är icke godkänt
     }
-    else {
-        submitFormButton.removeAttribute('disabled', '');
-    }
-
-}
-
+    checkValidForm() //updaterar våra boolean variablar ifall saker är godkänt eller ej
+ }
     
