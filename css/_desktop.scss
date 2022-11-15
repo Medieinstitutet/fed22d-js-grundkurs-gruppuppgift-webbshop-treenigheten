@@ -79,9 +79,29 @@
 
     }
 
-    .checkOut button {
-        display: none;
+    .kundvagn-flex{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: center;
+        margin: 0 auto;
+        width: 90%;
     }
+    #donuts-kundvagn{
+        width: 50%;
+        ul{
+            li{
+                img{
+                    display: block;
+                    position: relative;
+                    bottom: 15px;
+                    width: 50px;
+                    height: auto;
+                }
+            }
+        }
+    }
+
 
     .row {
         flex-direction: row;
