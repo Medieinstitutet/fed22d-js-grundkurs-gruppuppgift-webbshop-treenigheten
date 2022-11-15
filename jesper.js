@@ -7,7 +7,6 @@ const selectPaymentMethod = document.querySelector('#paymentMethod'); //hittar v
 const formErrorField = document.querySelectorAll('.errorInput'); //hittar fält för felmeddelanden 
 const submitFormButton = document.querySelector('.btn'); //hittar continue to... knappen
 const zipcodeInput = document.querySelector('#zip');
-console.dir(zipcodeInput);
 
 //boolean variablar för check av formulär
 //Alla godkända aktiveras knappen submit!
