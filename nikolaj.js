@@ -7,7 +7,7 @@ const donutArray = [
         picture2: "images/donut_1.png",      // Munk bild 2
         name: 'Socker Munk',                 // Munkens Namn
         price: 25,                           // Munkens Pris
-        quantity: 0,                         // Antal Munkar
+        quantity: 2,                         // Antal Munkar
         category: 'Budget',                  // Munkens Kategori  Budget/Economy/Deluxe
         rating: 1                            // Munkens Rating 1-5 stjärnor
     },
@@ -195,5 +195,112 @@ const updateDonut = (id) => {      // Denna funktion gör så att antalet uppdat
     console.log(search.amount);
     document.getElementById(id).innerHTML = search.amount;
 };
+
+
+
+// Evelinas kod
+
+const kundvagn = document.querySelector("#donuts-kundvagn");
+const totalpris = document.querySelector("#totalpris");
+let rabattkod = document.querySelector("#rabattkod");
+
+const d = new Date();
+// skapar dagens datum
+let dd = String(d.getDate()).padStart(2, '0');
+let mm = String(d.getMonth() + 1).padStart(2, '0'); //January is 0!
+let today = mm + '/' + dd;
+console.log(today)
+
+// Skapar veckodag 1-7
+let day = d.getDay();
+console.log(day)
+
+//skapar numret på aktuell vecka
+startDate = new Date(d.getFullYear(), 0, 1);
+var days = Math.floor((d - startDate) /
+        (24 * 60 * 60 * 1000));
+          
+var weekNumber = Math.ceil(days / 7);
+console.log(weekNumber)
+
+// skapar aktuellt klockslag
+let hours = d.getHours()
+let minutes = d.getMinutes()
+let time = hours + ":" + minutes;
+console.log (time)
+
+let totalt = 0;
+
+for (let i = 0; i < donutArray.length; i ++){
+
+    totalDonutPrice = donutArray[i].price*donutArray[i].quantity;
+    
+    // 10% rabatt om fler än 10 av en sort
+    if (donutArray[i].quantity > 10){
+        totalDonutPrice = totalDonutPrice * 0.9;
+    }
+    
+    totalt += totalDonutPrice; // räknar it totalsumman av alla donuts
+
+    if (donutArray[i].quantity > 0) {
+        kundvagn.innerHTML += `
+        <ul>
+            <li><img src = "${donutArray[i].picture1}"></li>
+            <li>${donutArray[i].name}</li>
+            <li>${donutArray[i].quantity} st</li>
+            <li> ${donutArray[i].price} kr/st</li>
+            <li>tot ${totalDonutPrice} kr</li>
+        </ul>`
+
+        totalpris.textContent = `Totalpris: ${totalt} kr`
+    }
+}
+
+
+// rabatt för tisdag och jämn vecka
+if(weekNumber % 2 == 0 && day === 2 && totalt > 25){
+    totalt = totalt * 0.75;
+    totalpris.innerHTML = `Tisdag jämn vecka, 25% rabatt!<br>Totalpris: ${totalt} kr`
+    }
+
+// luciabulle på köpet
+
+if (today === "12/13"){
+    totalpris.innerHTML = `Totalpris: ${totalt} kr<br>Du får en luciabulle på köpet!`;
+}
+
+// 10% måndagar innan kl10
+
+if(day === 1 && hours < 11 && minutes < 60){
+    totalt = totalt * 0.9;
+    totalpris.innerHTML = `Måndag innan kl 10, 10% rabatt!<br>Totalpris: ${totalt} kr`
+}
+
+//Om lucia och jämn vecka och tisdag
+if(weekNumber % 2 == 0 && day === 3 && totalt > 25 && today === "12/13"){
+    totalt = totalt * 0.75;
+    totalpris.innerHTML = `Tisdag jämn vecka, 25% rabatt!<br> Totalpris: ${totalt} kr.<br> Du får dessutom luciabulle på köpet!` 
+}
+
+//Om lucia och måndag innan kl10
+
+if (today === "12/13" && day === 1 && hours < 11 && minutes < 60){
+    totalt = totalt * 0.9;
+    totalpris.innerHTML = `Måndag innan kl 10, 10% rabatt!<br>Totalpris: ${totalt} kr.<br>Du får dessutom luciabulle på köpet!` 
+}
+
+
+
+// funktion för rabattkod a_damn_fine-cup_of-coffee
+function rabatt(){
+    if (rabattkod.value ==="a_damn_fine-cup_of-coffee"){
+        totalpris.textContent = `Grattis, beställningen är gratis!`;
+        totalt = 0;
+        rabattkod.value = "";
+        console.log(totalt);
+    }
+
+}
+
 
 
