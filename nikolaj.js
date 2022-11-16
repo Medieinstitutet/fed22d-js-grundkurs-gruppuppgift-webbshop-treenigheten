@@ -315,19 +315,22 @@ const selectPaymentMethod = document.querySelector('#paymentMethod'); //hittar v
 const formErrorField = document.querySelectorAll('.errorInput'); //hittar fält för felmeddelanden 
 const submitFormButton = document.querySelector('.btn'); //hittar continue to... knappen
 const zipcodeInput = document.querySelector('#zip');
+const firstNameInput = document.querySelector('#fname');
+const lastNameInput = document.querySelector('#lname');
+const cityNameInput = document.querySelector('#city');
+const emailInput = document.querySelector('#email');
+const addressInput = document.querySelector('#adr');
 
 //boolean variablar för check av formulär
 //Alla godkända aktiveras knappen submit!
 function checkValidForm() {
-    let validFirstName = null;
-    let validLastName = null;
+    let validFirstName = firstNameInput.formNoValidate;
+    let validLastName = lastNameInput.formNoValidate;
     let validEmail = null;
     let validAddress = null;
-    let validCity = null;
+    let validCity = cityNameInput.formNoValidate;
     let validZip = zipcodeInput.formNoValidate;
     let validPersonnummer = personNummerInput.formNoValidate;
-    console.log(validZip)
-    console.log(validPersonnummer)
     
     if (validFirstName && validLastName && validEmail && validAddress && validCity && validZip && validPersonnummer) {
         submitFormButton.removeAttribute('disabled');
@@ -345,6 +348,19 @@ personNummerInput.addEventListener('change', () => {
 zipcodeInput.addEventListener('change', () => {
     checkNumberIfOk(zipcodeInput, 5, 0) //kopplar funktion till on change vid zipcode
 } );
+firstNameInput.addEventListener('change', () => {
+    checkTextIfOk(firstNameInput, 0) //kopplar funktion till on change vid firstname
+} );
+lastNameInput.addEventListener('change', () => {
+    checkTextIfOk(lastNameInput, 0) //kopplar funktion till on change vid firstname
+} );
+cityNameInput.addEventListener('change', () => {
+    checkTextIfOk(cityNameInput, 0) //kopplar funktion till on change vid firstname
+} );
+emailInput.addEventListener('change', checkEmailIfOk);
+addressInput.addEventListener('change', checkAddressIfOk);
+
+
 
 //funktion som loopar igenom alla input och sätter value till 0 = null
 function deleteAllFormInput() {
@@ -383,22 +399,6 @@ function showSelectedPaymentMethod() {
     }
 }
 
-//funktion för a validera personnr
-function checkPersonNummerIfOk(){    
-    let numbers = /^[0-9]+$/; //regEx siffror magi
-    //om personnr endast innhåller siffror + är exakt 10 siffror långt
-    if (personNummerInput.value.match(numbers) && personNummerInput.value.length == 10){
-        validPersonnummer = true;
-        console.log(validPersonnummer)
-        formErrorField[1].textContent = null;
-        
-    }
-    else { //a11y = ska fel skrivas i början av formuläret
-        validPersonnummer = false;
-        formErrorField[1].textContent = 'Fel angivet personnummer'
-    }
-}
-
 //funktion för a validera alla typer av nummer
 //inputField = vilket inputfält vi får datan ifrån
 //numberAmount = antal tecken/siffror som är godkänt
@@ -407,11 +407,53 @@ const checkNumberIfOk = function(inputField, numberAmount, errorField){
      let numbers = /^[0-9]+$/;      
      if (inputField.value.match(numbers) && inputField.value.length == numberAmount){
          formErrorField[errorField].textContent = null;
+         inputField.style.color = 'black';
          inputField.formNoValidate = true; //skickar tillbaka true om det är godkänt
      }
      else {
          formErrorField[errorField].textContent = 'Fel angivet ' + inputField.name;
+         inputField.style.color = 'red';
          inputField.formNoValidate = false; //skickar tillbaka false om det är icke godkänt
     }
     checkValidForm() //updaterar våra boolean variablar ifall saker är godkänt eller ej
 }
+
+//funktion för a validera alla typer av nummer
+//inputField = vilket inputfält vi får datan ifrån
+//errorField = 0 för kontakt info 1 för betalinfo
+const checkTextIfOk = function(inputField, errorField){    
+    let letters = /^[a-zA-Z]+$/;      
+    if (inputField.value.match(letters)){
+        formErrorField[errorField].textContent = null;
+        inputField.style.color = 'black';
+        inputField.formNoValidate = true; //skickar tillbaka true om det är godkänt
+    }
+    else {
+        formErrorField[errorField].textContent = 'Fel angivet ' + inputField.name;
+        inputField.style.color = 'red';
+        inputField.formNoValidate = false; //skickar tillbaka false om det är icke godkänt
+   }
+   checkValidForm() //updaterar våra boolean variablar ifall saker är godkänt eller ej
+}
+
+
+
+
+
+
+
+//gammal funktion
+// function checkPersonNummerIfOk(){    
+//     let numbers = /^[0-9]+$/; //regEx siffror magi
+//     //om personnr endast innhåller siffror + är exakt 10 siffror långt
+//     if (personNummerInput.value.match(numbers) && personNummerInput.value.length == 10){
+//         validPersonnummer = true;
+//         console.log(validPersonnummer)
+//         formErrorField[1].textContent = null;
+        
+//     }
+//     else { //a11y = ska fel skrivas i början av formuläret
+//         validPersonnummer = false;
+//         formErrorField[1].textContent = 'Fel angivet personnummer'
+//     }
+// }
