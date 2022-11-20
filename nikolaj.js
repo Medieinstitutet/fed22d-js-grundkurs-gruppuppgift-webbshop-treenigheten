@@ -274,7 +274,7 @@ for (let i = 0; i < donutArray.length; i ++){
     if(antalDonuts > 15){
         fraktPris = 0; // gratis frakt om fler än 15 munkar
     } else{
-        fraktPris = 25 + (totalt * 0.1) // Frakt 25 kr + 10% av totalpris
+        fraktPris = Math.round(25 + (totalt * 0.1)) // Frakt 25 kr + 10% av totalpris avrundat till heltal
     }
 
     fraktpris.innerHTML = `Frakt: ${fraktPris} kr`; // Skriver ut pris för frakt
