@@ -206,15 +206,16 @@ let updateDonut = (id) => {      // Denna funktion gör så att antalet uppdater
 const kundvagn = document.querySelector("#donuts-kundvagn");
 const totalpris = document.querySelector("#totalpris");
 const clearBtn = document.querySelector("#clearBtn");
-let rabattkod = document.querySelector("#rabattkod");
+const rabattkod = document.querySelector("#rabattkod");
 const kundvagnSymbol = document.querySelector("#kundvagnSymbol");
-const timeWarning = document.querySelector("#timeWarning");
+const fraktpris = document.querySelector("#fraktpris");
+const totInklFrakt = document.querySelector("#prisInkFrakt");
 let antalDonuts = 0;
 let totalt = 0;
 let kundkorgQuantity = "";
 
 const d = new Date();
-// skapar dagens datum
+// skapar dagens datum (månad/datum)
 let dd = String(d.getDate()).padStart(2, '0');
 let mm = String(d.getMonth() + 1).padStart(2, '0'); //January is 0!
 let today = mm + '/' + dd;
@@ -239,6 +240,7 @@ function printCurrentDonuts(){
     kundvagn.innerHTML = "";
     totalt = 0;
     antalDonuts = 0;
+    fraktPris = 0;
 
 for (let i = 0; i < donutArray.length; i ++){
 
@@ -252,6 +254,17 @@ for (let i = 0; i < donutArray.length; i ++){
     
     antalDonuts += donutArray[i].quantity; //räknar ut hur många donuts i varukorgen
     totalt += totalDonutPrice; // räknar it totalsumman av alla donuts
+    
+    if(antalDonuts > 15){
+        fraktPris = 0; // gratis frakt om fler än 15 munkar
+    } else{
+        fraktPris = 25 + (totalt * 0.1) // Frakt 25 kr + 10% av totalpris
+    }
+
+    fraktpris.innerHTML = `Frakt: ${fraktPris} kr`; // Skriver ut pris för frakt
+
+    totInklFrakt.innerHTML = `Totalt: ${fraktPris + totalt} kr`;
+
 
     // Visar antal donuts och totalpris i varukorgen i menyn
     kundvagnSymbol.innerHTML = `<i class="fa-solid fa-cart-shopping"></i>${antalDonuts} för tot ${totalt} kr`
@@ -267,7 +280,7 @@ for (let i = 0; i < donutArray.length; i ++){
             <li>tot ${totalDonutPrice} kr</li>
         </ul>`
 
-        totalpris.textContent = `Totalpris: ${totalt} kr`
+        totalpris.textContent = `Pris: ${totalt} kr`
     } 
 }
 }
@@ -332,7 +345,7 @@ timer()
 
 // visar ett varningsmeddelande att det är 3 min kvar innan korgen töms
 function warningTime(){
-    alert("OBS! Beställ inom 3 minuter, annars återställs din varukorg!")
+    alert("OBS! Slutför din beställning inom 3 minuter, annars töms din varukorg!")
 
 }
 
