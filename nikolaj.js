@@ -220,7 +220,7 @@ let dd = String(d.getDate()).padStart(2, '0');
 let mm = String(d.getMonth() + 1).padStart(2, '0'); //January is 0!
 let today = mm + '/' + dd;
 
-// Skapar veckodag 1-7
+// Skapar veckodag 0-6 0 = söndag, 1 = måndag osv.
 let day = d.getDay();
 
 //skapar numret på aktuell vecka
@@ -234,6 +234,22 @@ var weekNumber = Math.ceil(days / 7);
 let hours = d.getHours()
 let minutes = d.getMinutes()
 let time = hours + ":" + minutes;
+console.log(day)
+
+
+// Fredag 15:00 - måndag 03:00 alla munkar 15% dyrare
+
+function weekendPrice(){
+     if(day===5 && hours >= 15 || day > 5 || day === 0 || day === 1 && hours < 3){
+        for (let i = 0; i < donutArray.length; i ++){
+            donutArray[i].price = Math.round(donutArray[i].price * 1.15); // 15% dyrare och avrundat till heltal
+            console.log(donutArray[i].price);
+         }
+        generateDonuts()
+    }
+}
+
+weekendPrice()
 
 // Lägger till donuts i varukorgen
 function printCurrentDonuts(){
@@ -325,7 +341,7 @@ function rabatt(){
         totalpris.textContent = `Grattis, beställningen är gratis!`;
         totalt = 0;
         rabattkod.value = "";
-        console.log(totalt);
+        totInklFrakt.innerHTML = `Totalt: ${fraktPris + totalt} kr`
     }
 
 }
@@ -358,6 +374,10 @@ function warningTime(){
         printCurrentDonuts(); //laddar om kassan
         generateDonuts(); //laddar om html'n
         kundvagn.innerHTML = `<h3>Varukorgen är tom</h3>`
+        totInklFrakt.innerHTML = `Totalt: 0 kr`;
+        totalpris.innerHTML = ``;
+        fraktpris.innerHTML=``;
+
         }
 
 
