@@ -31,4 +31,27 @@
       width: 200px;
     }
   }
+  #donuts-kundvagn {
+    ul{
+      width: 80%;
+      display: flex;
+      justify-content: space-between;
+      margin-top: 40px;
+      font-size: 1.3rem;
+    }
+  }
+  .kundkorg-info{
+    input, button{
+      height: 50px;
+      border-radius: 10px;
+      margin-left: 10px;
+      magin-right: 10px;
+    }
+    input{
+      width: 150%;
+    }
+    .rabatt-flex{
+      display:flex;
+    }
+  }
 }

@@ -204,6 +204,7 @@ const rabattkod = document.querySelector("#rabattkod");
 const kundvagnSymbol = document.querySelector("#kundvagnSymbol");
 const fraktpris = document.querySelector("#fraktpris");
 const totInklFrakt = document.querySelector("#prisInkFrakt");
+const darkThemeBtn = document.querySelector("#darkThemeBtn");
 let antalDonuts = 0;
 let totalt = 0;
 let kundkorgQuantity = "";
@@ -273,28 +274,31 @@ for (let i = 0; i < donutArray.length; i ++){
 
     fraktpris.innerHTML = `Frakt: ${fraktPris} kr`; // Skriver ut pris för frakt
 
-    totInklFrakt.innerHTML = `Totalt: ${fraktPris + totalt} kr`;
+    totInklFrakt.innerHTML = `Totalbelopp: ${fraktPris + totalt} kr`;
 
 
     // Visar antal donuts och totalpris i varukorgen i menyn
-    kundvagnSymbol.innerHTML = `<i class="fa-solid fa-cart-shopping"></i>${antalDonuts} för tot ${totalt} kr`
+    kundvagnSymbol.innerHTML = `<i class="fa-solid fa-cart-shopping"></i><span>${antalDonuts}</span>  ${totalt} kr`
 
     //Skriver ut donuts i kundvagnen
     if (donutArray[i].quantity > 0) {
         kundvagn.innerHTML += `
-        <ul>
-            <li><img src = "${donutArray[i].picture1}"></li>
-            <li>${donutArray[i].name}</li>
-            <li>${donutArray[i].quantity} st</li>
-            <li> ${donutArray[i].price} kr/st</li>
-            <li>tot ${totalDonutPrice} kr</li>
-        </ul>`
+        <div>
+            <img src = "${donutArray[i].picture1}">
+            <ul>
+                <li><span>${donutArray[i].name}</span></li>
+                <li>${donutArray[i].quantity} st á ${donutArray[i].price} kr/st</li>
+                <li>totalt ${totalDonutPrice} kr</li>
+            </ul>
+        </div>`
 
         totalpris.textContent = `Pris: ${totalt} kr`
     } 
 }
+specialOffers()
 }
 
+function specialOffers(){
 // rabatt för tisdag och jämn vecka
 if(weekNumber % 2 == 0 && day === 2 && totalt > 25){
     totalt = totalt * 0.75;
@@ -303,29 +307,34 @@ if(weekNumber % 2 == 0 && day === 2 && totalt > 25){
 
 // luciabulle på köpet
 
-if (today === "12/13"){
+else if (today === "12/13"){
     totalpris.innerHTML = `Totalpris: ${totalt} kr<br>Du får en luciabulle på köpet!`;
 }
 
 // 10% måndagar innan kl10
 
-if(day === 1 && hours < 11 && minutes < 60){
+ else if(day === 1 && hours < 11 && minutes < 60){
     totalt = totalt * 0.9;
     totalpris.innerHTML = `Måndag innan kl 10, 10% rabatt!<br>Totalpris: ${totalt} kr`
 }
 
 //Om lucia och jämn vecka och tisdag
-if(weekNumber % 2 == 0 && day === 3 && totalt > 25 && today === "12/13"){
+else if(weekNumber % 2 == 0 && day === 3 && totalt > 25 && today === "12/13"){
     totalt = totalt * 0.75;
     totalpris.innerHTML = `Tisdag jämn vecka, 25% rabatt!<br> Totalpris: ${totalt} kr.<br> Du får dessutom luciabulle på köpet!` 
 }
 
 //Om lucia och måndag innan kl10
 
-if (today === "12/13" && day === 1 && hours < 11 && minutes < 60){
+else if (today === "12/13" && day === 1 && hours < 11 && minutes < 60){
     totalt = totalt * 0.9;
     totalpris.innerHTML = `Måndag innan kl 10, 10% rabatt!<br>Totalpris: ${totalt} kr.<br>Du får dessutom luciabulle på köpet!` 
 }
+
+else{
+}
+}
+
 
 
 
@@ -374,6 +383,21 @@ function warningTime(){
 
         }
 
+        let body = document.querySelector("#body");
+
+//Dark-theme toggle
+darkThemeBtn.addEventListener("click", function(){
+    body.classList.toggle("dark-theme");
+})
+
+// om julafton julaftontema
+function christmasTheme(){
+ if(dd = 24 && mm == 12){
+     body.classList.add("christmas-theme");
+     console.log("idag")
+ }
+}
+christmasTheme()
 
 
 //-=JESPERS KOD=-//
@@ -429,8 +453,8 @@ lastNameInput.addEventListener('change', () => {
 cityNameInput.addEventListener('change', () => {
     checkTextIfOk(cityNameInput, 0) //kopplar funktion till on change vid firstname
 } );
-emailInput.addEventListener('change', checkEmailIfOk);
-addressInput.addEventListener('change', checkAddressIfOk);
+// emailInput.addEventListener('change', checkEmailIfOk);
+// addressInput.addEventListener('change', checkAddressIfOk);
 
 
 
