@@ -393,6 +393,7 @@ const cityNameInput = document.querySelector('#city');
 const emailInput = document.querySelector('#email');
 const addressInput = document.querySelector('#adr');
 
+
 //boolean variablar för check av formulär
 //Alla godkända aktiveras knappen submit!
 function checkValidForm() {
@@ -410,29 +411,6 @@ function checkValidForm() {
     else { //ingethänder
     }
 }
-
-//Kopplar funktioner till tryck/changes
-clearFormButton.addEventListener('click', deleteAllFormInput); //kopplar funktion till knapptryck av "rensa formulär"
-selectPaymentMethod.addEventListener('change', showSelectedPaymentMethod); //kopplar funktion till val av betalmetod
-personNummerInput.addEventListener('change', () => { 
-    checkNumberIfOk(personNummerInput, 10, 1) //kopplar funktion till on change vid personnrfältet
-} );
-zipcodeInput.addEventListener('change', () => {
-    checkNumberIfOk(zipcodeInput, 5, 0) //kopplar funktion till on change vid zipcode
-} );
-firstNameInput.addEventListener('change', () => {
-    checkTextIfOk(firstNameInput, 0) //kopplar funktion till on change vid firstname
-} );
-lastNameInput.addEventListener('change', () => {
-    checkTextIfOk(lastNameInput, 0) //kopplar funktion till on change vid firstname
-} );
-cityNameInput.addEventListener('change', () => {
-    checkTextIfOk(cityNameInput, 0) //kopplar funktion till on change vid firstname
-} );
-emailInput.addEventListener('change', checkEmailIfOk);
-addressInput.addEventListener('change', checkAddressIfOk);
-
-
 
 //funktion som loopar igenom alla input och sätter value till 0 = null
 function deleteAllFormInput() {
@@ -510,22 +488,23 @@ const checkTextIfOk = function(inputField, errorField){
 
 
 
-
-
-
-
-//gammal funktion
-// function checkPersonNummerIfOk(){    
-//     let numbers = /^[0-9]+$/; //regEx siffror magi
-//     //om personnr endast innhåller siffror + är exakt 10 siffror långt
-//     if (personNummerInput.value.match(numbers) && personNummerInput.value.length == 10){
-//         validPersonnummer = true;
-//         console.log(validPersonnummer)
-//         formErrorField[1].textContent = null;
-        
-//     }
-//     else { //a11y = ska fel skrivas i början av formuläret
-//         validPersonnummer = false;
-//         formErrorField[1].textContent = 'Fel angivet personnummer'
-//     }
-// }
+// = = = = Kopplar funktioner till tryck/changes = = = = //
+clearFormButton.addEventListener('click', deleteAllFormInput); //kopplar funktion till knapptryck av "rensa formulär"
+selectPaymentMethod.addEventListener('change', showSelectedPaymentMethod); //kopplar funktion till val av betalmetod
+personNummerInput.addEventListener('change', () => { 
+    checkNumberIfOk(personNummerInput, 10, 1) //kopplar funktion till on change vid personnrfältet
+} );
+zipcodeInput.addEventListener('change', () => {
+    checkNumberIfOk(zipcodeInput, 5, 0) //kopplar funktion till on change vid zipcode
+} );
+firstNameInput.addEventListener('change', () => {
+    checkTextIfOk(firstNameInput, 0) //kopplar funktion till on change vid firstname
+} );
+lastNameInput.addEventListener('change', () => {
+    checkTextIfOk(lastNameInput, 0) //kopplar funktion till on change vid firstname
+} );
+cityNameInput.addEventListener('change', () => {
+    checkTextIfOk(cityNameInput, 0) //kopplar funktion till on change vid firstname
+} );
+emailInput.addEventListener('change', checkEmailIfOk);
+addressInput.addEventListener('change', checkAddressIfOk);
