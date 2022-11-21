@@ -185,10 +185,10 @@ const removeDonut = (id) => {
 
 let updateQuantity = (id) => {
     let search = donutArray.find ((x) => x.id === id);
-    console.log(search.quantity);
+    
     document.getElementById(id).innerHTML = search.quantity;
     printCurrentDonuts()
-    console.log(donutArray);
+    
 };
 
 
@@ -228,7 +228,7 @@ var weekNumber = Math.ceil(days / 7);
 let hours = d.getHours()
 let minutes = d.getMinutes()
 let time = hours + ":" + minutes;
-console.log(day)
+
 
 
 // Fredag 15:00 - måndag 03:00 alla munkar 15% dyrare
@@ -385,13 +385,15 @@ const personNummerInput = document.querySelector('#personnum'); //hittar personn
 const creditCardInputs = document.querySelectorAll('input[data-operator="creditcard"'); //hittar alla creditkortsfält
 const selectPaymentMethod = document.querySelector('#paymentMethod'); //hittar val av betalmetod
 const formErrorField = document.querySelectorAll('.errorInput'); //hittar fält för felmeddelanden 
-const submitFormButton = document.querySelector('.btn'); //hittar continue to... knappen
+const submitFormButton = document.querySelector('#sendOrder'); //hittar continue to... knappen
 const zipcodeInput = document.querySelector('#zip');
 const firstNameInput = document.querySelector('#fname');
 const lastNameInput = document.querySelector('#lname');
 const cityNameInput = document.querySelector('#city');
 const emailInput = document.querySelector('#email');
 const addressInput = document.querySelector('#adr');
+const gdprInput = document.querySelector('#approvedGDPR');
+
 
 
 //boolean variablar för check av formulär
@@ -399,23 +401,26 @@ const addressInput = document.querySelector('#adr');
 function checkValidForm() {
     let validFirstName = firstNameInput.formNoValidate;
     let validLastName = lastNameInput.formNoValidate;
-    let validEmail = null;
-    let validAddress = null;
+    let validEmail = emailInput.formNoValidate;
+    let validAddress = addressInput.formNoValidate
     let validCity = cityNameInput.formNoValidate;
     let validZip = zipcodeInput.formNoValidate;
     let validPersonnummer = personNummerInput.formNoValidate;
+    let validGDPR = gdprInput.checked;
     
-    if (validFirstName && validLastName && validEmail && validAddress && validCity && validZip && validPersonnummer) {
+    if (validFirstName && validLastName && validEmail && validAddress && validCity && validZip && validPersonnummer && validGDPR) {
         submitFormButton.removeAttribute('disabled');
+        submitFormButton.value = 'Klart! Klicka för att beställa!'
     }
     else { //ingethänder
+        console.log('fortsätt fyll i forumlär')
     }
 }
 
 //funktion som loopar igenom alla input och sätter value till 0 = null
 function deleteAllFormInput() {
     //från 3 till -1 för att endast påverka forumlären
-    for (i = 3; i < allInputForms.length-1; i++) {
+    for (i = 1; i < allInputForms.length-1; i++) {
         allInputForms[i].value = null;
     }
 }
@@ -465,7 +470,7 @@ const checkNumberIfOk = function(inputField, numberAmount, errorField){
          inputField.style.color = 'red';
          inputField.formNoValidate = false; //skickar tillbaka false om det är icke godkänt
     }
-    checkValidForm() //updaterar våra boolean variablar ifall saker är godkänt eller ej
+    checkValidForm(); //updaterar våra boolean variablar ifall saker är godkänt eller ej
 }
 
 //funktion för a validera alla typer av nummer
@@ -483,10 +488,43 @@ const checkTextIfOk = function(inputField, errorField){
         inputField.style.color = 'red';
         inputField.formNoValidate = false; //skickar tillbaka false om det är icke godkänt
    }
-   checkValidForm() //updaterar våra boolean variablar ifall saker är godkänt eller ej
+   checkValidForm(); //updaterar våra boolean variablar ifall saker är godkänt eller ej
 }
 
+function checkEmailIfOk(){    
+    let varification = /^\S+@\S+\.\S+$/;      
+    if (emailInput.value.match(varification)){
+        formErrorField[0].textContent = null;
+        emailInput.style.color = 'black';
+        emailInput.formNoValidate = true; //skickar tillbaka true om det är godkänt
+    }
+    else {
+        formErrorField[0].textContent = 'Fel angivet ' + emailInput.name;
+        emailInput.style.color = 'red';
+        emailInput.formNoValidate = false; //skickar tillbaka false om det är icke godkänt
+   }
+   checkValidForm(); //updaterar våra boolean variablar ifall saker är godkänt eller ej
+}
 
+function checkAddressIfOk(){    
+    let varification = /^\s*\S+(?:\s+\S+){1}/;
+      
+    if (addressInput.value.match(varification)){
+        formErrorField[0].textContent = null;
+        addressInput.style.color = 'black';
+        addressInput.formNoValidate = true; //skickar tillbaka true om det är godkänt
+    }
+    else {
+        formErrorField[0].textContent = 'Fel angivet ' + addressInput.name;
+        addressInput.style.color = 'red';
+        addressInput.formNoValidate = false; //skickar tillbaka false om det är icke godkänt
+   }
+   checkValidForm(); //updaterar våra boolean variablar ifall saker är godkänt eller ej
+}
+
+function sendDonutOrder(){
+    alert(` Tack för beställningen ${firstNameInput.value}! \n Vi skickar ${antalDonuts} munkar till ${addressInput.value} \n Totaltpris: ${totalt} kr \n Förväntad leverans tid VARIABEL`)
+}
 
 // = = = = Kopplar funktioner till tryck/changes = = = = //
 clearFormButton.addEventListener('click', deleteAllFormInput); //kopplar funktion till knapptryck av "rensa formulär"
@@ -508,3 +546,5 @@ cityNameInput.addEventListener('change', () => {
 } );
 emailInput.addEventListener('change', checkEmailIfOk);
 addressInput.addEventListener('change', checkAddressIfOk);
+gdprInput.addEventListener('change', checkValidForm);
+submitFormButton.addEventListener('click', sendDonutOrder);
