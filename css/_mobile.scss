@@ -5,6 +5,14 @@ $accent-color: #ea5c91;
 
 //general
 
+.shop {
+  display: grid;
+  grid-template-columns: repeat(1, 280px);
+  gap: 30px;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
 body {
   text-align: center;
   font-family: nunito, sans-serif;
@@ -104,20 +112,6 @@ header {
   }
 }
 
-// NIKOLAJ Start //
-
-/**
-* ? MunkKort Layout Finns Här
-**/
-
-.shop {
-  display: grid;
-  grid-template-columns: repeat(1, 280px);
-  gap: 30px;
-  justify-content: center;
-  margin-bottom: 30px;
-}
-
 .item {
   border: 2px solid #131313;
   border-radius: 6px;
@@ -182,32 +176,32 @@ header {
   border: 1px solid $dark--color;
 }
 
-#donuts-kundvagn{
+#donuts-kundvagn {
   text-align: left;
-  h3{
+  h3 {
     text-align: center;
   }
-  ul{
+  ul {
     list-style-type: none;
     display: flex;
     justify-content: space-evenly;
-    li{
-      img{
+    li {
+      img {
         display: none;
       }
-    } 
+    }
   }
 }
 
-.kundkorg-info{
-  input{
+.kundkorg-info {
+  input {
     margin-bottom: 0;
   }
-  button{
+  button {
     margin-top: 0;
     margin-bottom: 30px;
     background-color: $middle--color;
-    font-family: 'nunito', sans serif;
+    font-family: "nunito", sans serif;
     color: white;
     border: 1px solid $dark--color;
     padding: 12px;
@@ -217,14 +211,15 @@ header {
     font-size: 17px;
     &:hover {
       background-color: $dark--color;
-      
     }
   }
-  #totalpris, #fraktpris, #prisInkFrakt{
+  #totalpris,
+  #fraktpris,
+  #prisInkFrakt {
     font-size: 1rem;
     line-height: 2rem;
   }
-  #prisInkFrakt{
+  #prisInkFrakt {
     font-size: 1.3rem;
   }
 }
@@ -302,7 +297,6 @@ label {
 
 .btn:hover {
   background-color: $dark--color;
-  
 }
 
 .clear:hover {

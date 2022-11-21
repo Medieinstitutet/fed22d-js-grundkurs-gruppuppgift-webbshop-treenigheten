@@ -1,4 +1,9 @@
 @media screen and (min-width: 1200px) {
+  .shop {
+    display: grid;
+    grid-template-columns: repeat(4, 280px);
+  }
+
   nav {
     position: fixed;
     z-index: 3;
@@ -73,39 +78,30 @@
     padding-right: 25px;
     padding-left: 25px;
   }
-  .kundvagn-flex{
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  align-items: center;
-  margin: 0 auto;
-  width: 90%;
-    }
-    #donuts-kundvagn{
-        width: 50%;
-        ul{
-            li{
-                img{
-                    display: block;
-                    position: relative;
-                    bottom: 15px;
-                    width: 50px;
-                    height: auto;
-                }
-            }
-        }
-    }
-
-
-    .row {
-        flex-direction: row;
-
-  .shop {
-    display: grid;
-    grid-template-columns: repeat(4, 280px);
-    gap: 30px;
-    justify-content: center;
-    margin-bottom: 30px;
+  .kundvagn-flex {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 0 auto;
+    width: 90%;
   }
-}
+  #donuts-kundvagn {
+    width: 50%;
+    ul {
+      li {
+        img {
+          display: block;
+          position: relative;
+          bottom: 15px;
+          width: 50px;
+          height: auto;
+        }
+      }
+    }
+  }
+
+  .row {
+    flex-direction: row;
+  }
 }

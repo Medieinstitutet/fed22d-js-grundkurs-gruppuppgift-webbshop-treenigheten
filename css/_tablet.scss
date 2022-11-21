@@ -1,4 +1,12 @@
 @media screen and (min-width: 700px) {
+  .shop {
+    display: grid;
+    grid-template-columns: repeat(2, 280px);
+    gap: 30px;
+    justify-content: center;
+    margin-bottom: 30px;
+  }
+
   header {
     text-align: center;
     padding-top: 200px;
@@ -22,12 +30,5 @@
     a {
       width: 200px;
     }
-  }
-  .shop {
-    display: grid;
-    grid-template-columns: repeat(2, 280px);
-    gap: 30px;
-    justify-content: center;
-    margin-bottom: 30px;
   }
 }
