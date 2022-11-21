@@ -40,7 +40,9 @@
         <li><a href="#">hem</a></li>
         <li><a href="#">shop</a></li>
         <li>
-          <a href="#"><i class="fa-solid fa-cart-shopping"></i>0</a>
+          <a href="#" id="kundvagnSymbol"
+            ><i class="fa-solid fa-cart-shopping"></i>0</a
+          >
         </li>
       </ul>
     </nav>
@@ -76,7 +78,7 @@
         <h2>Kundvagn</h2>
         <div class="kundvagn-flex">
           <div id="donuts-kundvagn">
-            <h3>I din varukorg:</h3>
+            <h3>Varukorgen är tom</h3>
           </div>
           <div class="kundkorg-info">
             <div>
@@ -91,16 +93,18 @@
                 Aktivera rabatt
               </button>
             </div>
-            <p id="totalpris">Totalpris: 0 kr</p>
+            <p id="totalpris">Pris: 0 kr</p>
+            <p id="fraktpris"></p>
+            <p id="prisInkFrakt"></p>
           </div>
         </div>
         <button class="btn">Till betalning</button>
+        <button class="btn" id="clearBtn">Rensa varukorgen</button>
       </section>
 
       <section class="userForm">
         <form>
           <div class="row">
-            
             <div class="col-50">
               <h3>Betalinformation</h3>
               <div class="errorInput"></div>
@@ -128,22 +132,22 @@
 
               <div class="row">
                 <div class="col-75">
-                    <label for="adr">Gatuadress (required)</label>
-                    <input
-                        type="text"
-                        id="adr"
-                        name="address"
-                        placeholder="Givmunkar 12B"
-                    />
+                  <label for="adr">Gatuadress (required)</label>
+                  <input
+                    type="text"
+                    id="adr"
+                    name="address"
+                    placeholder="Givmunkar 12B"
+                  />
                 </div>
                 <div class="col-25">
-                    <label for="adr">Portkod</label>
-                    <input
-                        type="text"
-                        id="portkod"
-                        name="portkod"
-                        placeholder="1234"
-                    />
+                  <label for="adr">Portkod</label>
+                  <input
+                    type="text"
+                    id="portkod"
+                    name="portkod"
+                    placeholder="1234"
+                  />
                 </div>
               </div>
 
@@ -162,10 +166,11 @@
                   <input type="text" id="zip" name="zip" placeholder="13337" />
                 </div>
               </div>
-              <button type="button" class="btn clear" id="clearFormButton">Rensa formulär</button>
+              <button type="button" class="btn clear" id="clearFormButton">
+                Rensa formulär
+              </button>
             </div>
 
-            
             <div class="col-50">
               <h3>Betalmetod</h3>
 
@@ -176,7 +181,9 @@
                 <option value="faktura">Faktura</option>
               </select>
               <div class="errorInput"></div>
-              <label hidden="true" for="personnum">Personnummer (required)</label>
+              <label hidden="true" for="personnum"
+                >Personnummer (required)</label
+              >
               <input
                 type="text"
                 id="personnum"
@@ -225,20 +232,32 @@
                 </div>
                 <div class="col-50">
                   <label hidden="true" for="cvv">CVV</label>
-                  <input type="text" id="cvv" name="cvv" placeholder="123" data-operator="creditcard" hidden="true" />
+                  <input
+                    type="text"
+                    id="cvv"
+                    name="cvv"
+                    placeholder="123"
+                    data-operator="creditcard"
+                    hidden="true"
+                  />
                 </div>
               </div>
             </div>
           </div>
           <label>
-            <input type="checkbox" checked="checked" name="newsletter" /> Yes, jag
-            vill prenumerera på nyhetsbrev!
+            <input type="checkbox" checked="checked" name="newsletter" /> Yes,
+            jag vill prenumerera på nyhetsbrev!
           </label>
           <label>
             <input type="checkbox" name="approvedGDPR" /> Yes, jag godkänner
             behandling av personuppgifter!
           </label>
-          <input disabled type="submit" value="Continue to checkout" class="btn" />
+          <input
+            disabled
+            type="submit"
+            value="Continue to checkout"
+            class="btn"
+          />
         </form>
       </section>
     </section>
