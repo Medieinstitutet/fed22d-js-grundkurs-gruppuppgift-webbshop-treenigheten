@@ -129,7 +129,7 @@ let shop = document.querySelector('#shop')
 
 
 let generateDonuts = () => {  // Denna funktion skapar nya munkar i html strukturen med datan från donutArray
-    return (shop.innerHTML = donutArray.map((x) => {
+     (shop.innerHTML = donutArray.map((x) => {
         let {id, name, price, picture1, picture2, quantity, category, rating} = x;
         return ` 
         <div id=product-id-${id} class="item">
