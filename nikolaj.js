@@ -1,3 +1,5 @@
+// ----- NIKOLAJ ----- //
+
 // ----- Array med munk information ----- // 
 
 const donutArray = [
@@ -125,11 +127,8 @@ const donutArray = [
 
 let shop = document.querySelector('#shop')
 
-let totalDonuts = [];  // Denna Array innehåller vilka munkar och hur många som har valts av varje munk.
-console.log(totalDonuts)
 
-
-let generateDonuts = () => {                              // Denna funktion skapar nya munkar i html strukturen med datan från donutArray
+let generateDonuts = () => {  // Denna funktion skapar nya munkar i html strukturen med datan från donutArray
     return (shop.innerHTML = donutArray.map((x) => {
         let {id, name, price, picture1, picture2, quantity, category, rating} = x;
         return ` 
@@ -142,9 +141,9 @@ let generateDonuts = () => {                              // Denna funktion skap
             <div class="price-quantity">
     
                 <div class="buttons">
-                    <i onclick="minusDonut(${id})" class="bi bi-dash-circle-fill"></i>
+                    <i onclick="removeDonut(${id})" class="bi bi-dash-circle-fill"></i>
                     <div id=${id} class="quantity">${quantity}</div>
-                    <i onclick="plusDonut(${id})" class="bi bi-plus-circle-fill"></i>
+                    <i onclick="addDonut(${id})" class="bi bi-plus-circle-fill"></i>
                 </div>
             </div>
         </div>
@@ -153,52 +152,45 @@ let generateDonuts = () => {                              // Denna funktion skap
     }).join(""));
 };
 
-generateDonuts ();   // Denna funktion skapar nya munkar i html strukturen med datan från donutArray
+generateDonuts ();  
 
 
-
-const plusDonut = (id) => {     // Denna funktion gör så plus knappen funkar och lägger till datan i en ny array
-
+const addDonut = (id) => {
     let selectedDonut = id;
-
     let search = donutArray.find((x) => x.id === selectedDonut.id);
 
-    if (search === undefined) {
+    if (search === undefined){
         donutArray.push({
             id: selectedDonut.id,
             quantity: 1,
-        })
+        }) 
     }
-else{
-    search.quantity +=1;
-}
-// console.log(totalDonuts)
-updateDonut(selectedDonut.id)
-
+    else {
+        search.quantity += 1;
+    }      
+    updateQuantity(selectedDonut.id)    
 };
 
 
-const minusDonut = (id) => {    // Denna funktion gör så minus knappen funkar och lägger till datan i en ny array
+const removeDonut = (id) => {
     let selectedDonut = id;
-
     let search = donutArray.find((x) => x.id === selectedDonut.id);
 
-    if (search.quantity === 0) return;   // stoppar loopen om värdet blir 0
-else{
-    search.quantity-=1;
-}
-updateDonut(selectedDonut.id)
+    if (search.quantity === 0) return;
+    else {
+        search.quantity -= 1;
+    }      
+    updateQuantity(selectedDonut.id)    
 };
 
-let updateDonut = (id) => {      // Denna funktion gör så att antalet uppdateras & skrivs ut i html dokumentet.
-    let search = donutArray.find((x) => x.id === id);
+let updateQuantity = (id) => {
+    let search = donutArray.find ((x) => x.id === id);
     console.log(search.quantity);
     document.getElementById(id).innerHTML = search.quantity;
-    printCurrentDonuts();
 };
 
 
-
+// ----- NIKOLAJ ----- //
 
 
 // Evelinas kod
