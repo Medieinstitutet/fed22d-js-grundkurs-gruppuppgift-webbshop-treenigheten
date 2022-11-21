@@ -220,9 +220,12 @@ header {
       
     }
   }
-  #totalpris{
+  #totalpris, #fraktpris, #prisInkFrakt{
+    font-size: 1rem;
+    line-height: 2rem;
+  }
+  #prisInkFrakt{
     font-size: 1.3rem;
-    line-height: 3rem;
   }
 }
 .userForm {
