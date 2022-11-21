@@ -185,6 +185,7 @@ let updateQuantity = (id) => {
     let search = donutArray.find ((x) => x.id === id);
     console.log(search.quantity);
     document.getElementById(id).innerHTML = search.quantity;
+    console.log(donutArray);
 };
 
 
