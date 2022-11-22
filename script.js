@@ -6,7 +6,7 @@ const donutArray = [
     {
         id: 'donut1',                        // Munkens id
         picture1: "images/donut_1.png",      // Munk bild 2
-        picture2: "images/donut_1.png",      // Munk bild 2
+        picture2: "images/donut_1_two.png",      // Munk bild 2
         name: 'Socker Munk',                 // Munkens Namn
         price: 25,                           // Munkens Pris
         quantity: 0,                         // Antal Munkar
@@ -16,7 +16,7 @@ const donutArray = [
     {
         id: 'donut2',
         picture1: "images/donut_2.png",
-        picture2: "images/donut_2.png",
+        picture2: "images/donut_2_two.png",
         name: 'Choklad Munk',
         price: 25,
         quantity: 0,
@@ -26,7 +26,7 @@ const donutArray = [
     { 
         id: 'donut3',
         picture1: "images/donut_3.png",
-        picture2: "images/donut_3.png",
+        picture2: "images/donut_3_two.png",
         name: 'Vanilj Munk',
         price: 25,
         quantity: 0,
@@ -36,7 +36,7 @@ const donutArray = [
     {
         id: 'donut4',
         picture1: "images/donut_4.png",
-        picture2: "images/donut_4.png",
+        picture2: "images/donut_4_two.png",
         name: 'Äppel Munk',
         price: 25,
         quantity: 0,
@@ -46,7 +46,7 @@ const donutArray = [
     {
         id: 'donut5',
         picture1: "images/donut_5.png",
-        picture2: "images/donut_5.png",
+        picture2: "images/donut_5_two.png",
         name: 'Saffrans Munk',
         price: 25,
         quantity: 0,
@@ -56,7 +56,7 @@ const donutArray = [
     {
         id: 'donut6',
         picture1: "images/donut_6.png",
-        picture2: "images/donut_6.png",
+        picture2: "images/donut_6_two.png",
         name: 'Kokos Munk',
         price: 35,
         quantity: 0,
@@ -66,7 +66,7 @@ const donutArray = [
     {
         id: 'donut7',
         picture1: "images/donut_7.png",
-        picture2: "images/donut_7.png",
+        picture2: "images/donut_7_two.png",
         name: 'Citron Munk',
         price: 35,
         quantity: 0,
@@ -76,7 +76,7 @@ const donutArray = [
     {
         id: 'donut8',
         picture1: "images/donut_8.png",
-        picture2: "images/donut_8.png",
+        picture2: "images/donut_8_two.png",
         name: 'Blåbärs Munk',
         price: 35,
         quantity: 0,
@@ -86,7 +86,7 @@ const donutArray = [
     {
         id: 'donut9',
         picture1: "images/donut_9.png",
-        picture2: "images/donut_9.png",
+        picture2: "images/donut_9_two.png",
         name: 'Holy Munk',
         price: 45,
         quantity: 0,
@@ -96,7 +96,7 @@ const donutArray = [
     {
         id: 'donut10',
         picture1: "images/donut_10.png",
-        picture2: "images/donut_10.png",
+        picture2: "images/donut_10_two.png",
         name: 'Ängla Munk',
         price: 45,
         quantity: 0,
@@ -106,7 +106,7 @@ const donutArray = [
     {
         id: 'donut11',
         picture1: "images/donut_11.png",
-        picture2: "images/donut_11.png",
+        picture2: "images/donut_11_two.png",
         name: 'Gloria Munk',
         price: 45,
         quantity: 0,
@@ -116,7 +116,7 @@ const donutArray = [
     {
         id: 'donut12',
         picture1: "images/donut_12.png",
-        picture2: "images/donut_12.png",
+        picture2: "images/donut_12_two.png",
         name: 'Gudomlig Munk',
         price: 45,
         quantity: 0,
@@ -128,15 +128,31 @@ const donutArray = [
 let shop = document.querySelector('#shop')
 
 
+//funktion för rating stars
+const printRating = (rating) => {
+    
+    var stars = `<span class="ratingStars${rating}">&#9733;</span>`;
+
+    for (let i = 1; i < 5; i++) {
+        stars = stars + `<span class="ratingStars${rating}">&#9733;</span>`;
+    }
+    
+    return stars;
+}
+
 let generateDonuts = () => {  // Denna funktion skapar nya munkar i html strukturen med datan från donutArray
      (shop.innerHTML = donutArray.map((x) => {
         let {id, name, price, picture1, picture2, quantity, category, rating} = x;
         return ` 
         <div id=product-id-${id} class="item">
-        <img width="275" src=${picture1} alt="Munk bild ett.">
+        <div id=prod-img-${id} class="img-container">
+            <i onclick="nextImage(${id})" class="bi bi-caret-left-fill"></i>
+            <img width="275" src=${picture1} alt="Munk bild ett.">
+            <i onclick="nextImage(${id})" class="bi bi-caret-right-fill"></i>
+        </div>
         <div class="description">
             <h3>${name}</h3>
-            <p>RATING ${rating}</p>
+            <p>${printRating(rating)}</p>
             <h2>${price} kr</h2>
             <div class="price-quantity">
     
@@ -417,7 +433,24 @@ const cityNameInput = document.querySelector('#city');
 const emailInput = document.querySelector('#email');
 const addressInput = document.querySelector('#adr');
 const gdprInput = document.querySelector('#approvedGDPR');
+let imgClickCounter = 2;
 
+//Funktion för bildspel per munk
+const nextImage = (id) => {
+    
+    let selectedDonut = id;    
+    let search = donutArray.find((x) => x.id === selectedDonut.id);
+    selectedDonutImage = id.parentElement.parentElement.parentElement.previousElementSibling.children[1];
+    if (imgClickCounter == 2){
+        selectedDonutImage.setAttribute('src', search.picture2);
+        imgClickCounter--;
+    }
+    else {
+        selectedDonutImage.setAttribute('src', search.picture1);
+        imgClickCounter++;
+    }
+    
+}
 
 
 //boolean variablar för check av formulär

@@ -188,6 +188,59 @@ header {
   margin-left: 30px;
 }
 
+// jesper i nikos del //
+// pilar till munkbilderna
+.img-container {
+  position: relative;
+  i:nth-child(1) {
+    position: absolute;
+    top: 40%;
+    left: 5%;
+    font-size: 2rem;
+    color: $middle--color;
+  }
+  i:nth-child(3) {
+    position: absolute;
+    top: 40%;
+    right: 5%;
+    font-size: 2rem;
+    color: $middle--color;
+  }
+  i:hover {
+    color: $accent-color;
+  }
+} 
+
+
+// style för rating stars //
+.description p {
+
+  font-size: 1.5rem;
+
+  .ratingStars1:nth-child(1){
+    color: $accent-color;
+  }
+  
+  .ratingStars2:nth-child(-n+2) {
+    color: $accent-color;
+  }
+  
+  .ratingStars3:nth-child(-n+3) {
+    color: $accent-color;
+  }
+  
+  .ratingStars4:nth-child(-n+4) {
+    color: $accent-color;
+  }
+  
+  .ratingStars5 {
+    color: $accent-color;
+  }
+}
+
+
+
+
 // NIKOLAJ SLUT //
 
 * {
