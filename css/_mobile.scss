@@ -245,6 +245,10 @@ header {
 }
 
 .cart-info {
+  background: $soft--light;
+  border: 1px solid $dark--color;
+  padding: 20px 10px;
+  border-radius: 25px;
   input {
     margin-bottom: 0;
   }
