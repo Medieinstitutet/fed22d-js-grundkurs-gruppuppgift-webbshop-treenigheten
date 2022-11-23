@@ -203,7 +203,8 @@ let updateQuantity = (id) => {
     let search = donutArray.find ((x) => x.id === id);
     
     document.getElementById(id).innerHTML = search.quantity;
-    printCurrentDonuts()
+    printCurrentDonuts();
+    noFaktura();
     
 };
 
@@ -433,7 +434,12 @@ const cityNameInput = document.querySelector('#city');
 const emailInput = document.querySelector('#email');
 const addressInput = document.querySelector('#adr');
 const gdprInput = document.querySelector('#approvedGDPR');
+const paymentFaktura = document.querySelector('#paymentFaktura');
+const userFormPayment = document.querySelector('.userForm');
+const goToCheckOut = document.querySelector('#goToCheckOut');
+const goToShop = document.querySelector('#buyMoreDonuts');
 let imgClickCounter = 2;
+
 
 //Funktion för bildspel per munk
 const nextImage = (id) => {
@@ -452,6 +458,24 @@ const nextImage = (id) => {
     
 }
 
+//funktion för betala och stänga shoppen
+function continueToPayment() {
+    shop.style.visibility = 'hidden';
+    userFormPayment.style.visibility = 'visible';
+}
+
+function backToShop() {
+    shop.style.visibility = 'visible';
+    userFormPayment.style.visibility = 'hidden';
+}
+
+//funktion för dyrt för faktura
+function noFaktura() {
+    if (totalt > 800) {
+        paymentFaktura.value = 'Endast kortköp över 800kr';
+        paymentFaktura.textContent = 'Endast kortköp över 800kr';
+    }
+}
 
 //boolean variablar för check av formulär
 //Alla godkända aktiveras knappen submit!
@@ -627,3 +651,5 @@ emailInput.addEventListener('change', checkEmailIfOk);
 addressInput.addEventListener('change', checkAddressIfOk);
 gdprInput.addEventListener('change', checkValidForm);
 submitFormButton.addEventListener('click', sendDonutOrder);
+goToCheckOut.addEventListener('click', continueToPayment);
+goToShop.addEventListener('click', backToShop);
