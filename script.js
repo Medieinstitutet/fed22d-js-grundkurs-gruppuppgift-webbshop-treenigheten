@@ -197,17 +197,18 @@ let updateQuantity = (id) => {
 
 // Evelinas kod
 
-const kundvagn = document.querySelector("#donuts-kundvagn");
-const totalpris = document.querySelector("#totalpris");
+const cart = document.querySelector("#donuts-cart");
+const totalPrice = document.querySelector("#totalPrice");
 const clearBtn = document.querySelector("#clearBtn");
-const rabattkod = document.querySelector("#rabattkod");
-const kundvagnSymbol = document.querySelector("#kundvagnSymbol");
-const fraktpris = document.querySelector("#fraktpris");
-const totInklFrakt = document.querySelector("#prisInkFrakt");
+const discount = document.querySelector("#discount");
+const cartSymbol = document.querySelector("#cartSymbol");
+const shippingPrice = document.querySelector("#shippingPrice");
+const priceWithShipping = document.querySelector("#priceWithShipping");
 const darkThemeBtn = document.querySelector("#darkThemeBtn");
-let antalDonuts = 0;
-let totalt = 0;
-let kundkorgQuantity = "";
+let donutsAmount = 0;
+let total = 0;
+let cartQuantity = "";
+let shippingprice = 0;
 
 const d = new Date();
 // skapar dagens datum (månad/datum)
@@ -238,7 +239,6 @@ function weekendPrice(){
      if(day===5 && hours >= 15 || day > 5 || day === 0 || day === 1 && hours < 3){
         for (let i = 0; i < donutArray.length; i ++){
             donutArray[i].price = Math.round(donutArray[i].price * 1.15); // 15% dyrare och avrundat till heltal
-            console.log(donutArray[i].price);
          }
         generateDonuts()
     }
@@ -248,10 +248,11 @@ weekendPrice()
 
 // Lägger till donuts i varukorgen
 function printCurrentDonuts(){
-    kundvagn.innerHTML = "";
-    totalt = 0;
-    antalDonuts = 0;
-    fraktPris = 0;
+    cart.innerHTML = "";
+    total = 0;
+    donutsAmount = 0;
+    shippingprice = 0;
+    console.log("kopplar")
 
 for (let i = 0; i < donutArray.length; i ++){
 
@@ -263,26 +264,26 @@ for (let i = 0; i < donutArray.length; i ++){
         totalDonutPrice = totalDonutPrice * 0.9;
     }
     
-    antalDonuts += donutArray[i].quantity; //räknar ut hur många donuts i varukorgen
-    totalt += totalDonutPrice; // räknar it totalsumman av alla donuts
+    donutsAmount += donutArray[i].quantity; //räknar ut hur många donuts i varukorgen
+    total += totalDonutPrice; // räknar it totalsumman av alla donuts
     
-    if(antalDonuts > 15){
-        fraktPris = 0; // gratis frakt om fler än 15 munkar
+    if(donutsAmount > 15){
+        shippingprice = 0; // gratis frakt om fler än 15 munkar
     } else{
-        fraktPris = Math.round(25 + (totalt * 0.1)) // Frakt 25 kr + 10% av totalpris avrundat till heltal
+        shippingprice = Math.round(25 + (total * 0.1)) // Frakt 25 kr + 10% av totalpris avrundat till heltal
     }
 
-    fraktpris.innerHTML = `Frakt: ${fraktPris} kr`; // Skriver ut pris för frakt
+    shippingPrice.innerHTML = `Frakt: ${shippingprice} kr`; // Skriver ut pris för frakt
 
-    totInklFrakt.innerHTML = `Totalbelopp: ${fraktPris + totalt} kr`;
+    priceWithShipping.innerHTML = `Totalbelopp: ${shippingprice + total} kr`;
 
 
     // Visar antal donuts och totalpris i varukorgen i menyn
-    kundvagnSymbol.innerHTML = `<i class="fa-solid fa-cart-shopping"></i><span>${antalDonuts}</span>  ${totalt} kr`
+    cartSymbol.innerHTML = `<i class="fa-solid fa-cart-shopping"></i><span>${donutsAmount}</span>  ${total} kr`
 
     //Skriver ut donuts i kundvagnen
     if (donutArray[i].quantity > 0) {
-        kundvagn.innerHTML += `
+        cart.innerHTML += `
         <div>
             <img src = "${donutArray[i].picture1}">
             <ul>
@@ -292,7 +293,7 @@ for (let i = 0; i < donutArray.length; i ++){
             </ul>
         </div>`
 
-        totalpris.textContent = `Pris: ${totalt} kr`
+        totalPrice.textContent = `Pris: ${total} kr`
     } 
 }
 specialOffers()
@@ -301,34 +302,34 @@ specialOffers()
 function specialOffers(){
 // rabatt för tisdag och jämn vecka
 if(weekNumber % 2 == 0 && day === 2 && totalt > 25){
-    totalt = totalt * 0.75;
-    totalpris.innerHTML = `Tisdag jämn vecka, 25% rabatt!<br>Totalpris: ${totalt} kr`
+    total = total * 0.75;
+    totalPrice.innerHTML = `Tisdag jämn vecka, 25% rabatt!<br>Totalpris: ${total} kr`
     }
 
 // luciabulle på köpet
 
 else if (today === "12/13"){
-    totalpris.innerHTML = `Totalpris: ${totalt} kr<br>Du får en luciabulle på köpet!`;
+    totalPrice.innerHTML = `Totalpris: ${total} kr<br>Du får en luciabulle på köpet!`;
 }
 
 // 10% måndagar innan kl10
 
  else if(day === 1 && hours < 11 && minutes < 60){
-    totalt = totalt * 0.9;
-    totalpris.innerHTML = `Måndag innan kl 10, 10% rabatt!<br>Totalpris: ${totalt} kr`
+    total = total * 0.9;
+    totalPrice.innerHTML = `Måndag innan kl 10, 10% rabatt!<br>Totalpris: ${total} kr`
 }
 
 //Om lucia och jämn vecka och tisdag
 else if(weekNumber % 2 == 0 && day === 3 && totalt > 25 && today === "12/13"){
-    totalt = totalt * 0.75;
-    totalpris.innerHTML = `Tisdag jämn vecka, 25% rabatt!<br> Totalpris: ${totalt} kr.<br> Du får dessutom luciabulle på köpet!` 
+    total = total * 0.75;
+    totalPrice.innerHTML = `Tisdag jämn vecka, 25% rabatt!<br> Totalpris: ${total} kr.<br> Du får dessutom luciabulle på köpet!` 
 }
 
 //Om lucia och måndag innan kl10
 
 else if (today === "12/13" && day === 1 && hours < 11 && minutes < 60){
-    totalt = totalt * 0.9;
-    totalpris.innerHTML = `Måndag innan kl 10, 10% rabatt!<br>Totalpris: ${totalt} kr.<br>Du får dessutom luciabulle på köpet!` 
+    total = total * 0.9;
+    totalPrice.innerHTML = `Måndag innan kl 10, 10% rabatt!<br>Totalpris: ${total} kr.<br>Du får dessutom luciabulle på köpet!` 
 }
 
 else{
@@ -339,12 +340,12 @@ else{
 
 
 // funktion för rabattkod a_damn_fine-cup_of-coffee
-function rabatt(){
-    if (rabattkod.value ==="a_damn_fine-cup_of-coffee"){
-        totalpris.textContent = `Grattis, beställningen är gratis!`;
-        totalt = 0;
-        rabattkod.value = "";
-        totInklFrakt.innerHTML = `Totalt: ${fraktPris + totalt} kr`
+function discountFunction(){
+    if (discount.value ==="a_damn_fine-cup_of-coffee"){
+        totalPrice.textContent = `Grattis, beställningen är gratis!`;
+        total = 0;
+        discount.value = "";
+        priceWithShipping.innerHTML = `Totalt: ${shippingprice + total} kr`
     }
 
 }
@@ -376,10 +377,10 @@ function warningTime(){
         }
         printCurrentDonuts(); //laddar om kassan
         generateDonuts(); //laddar om html'n
-        kundvagn.innerHTML = `<h3>Varukorgen är tom</h3>`
-        totInklFrakt.innerHTML = `Totalt: 0 kr`;
-        totalpris.innerHTML = ``;
-        fraktpris.innerHTML=``;
+        cart.innerHTML = `<h3>Varukorgen är tom</h3>`
+        priceWithShipping.innerHTML = `Totalt: 0 kr`;
+        totalPrice.innerHTML = ``;
+        shippingPrice.innerHTML=``;
 
         }
 

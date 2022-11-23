@@ -43,7 +43,7 @@
         <!-- <li><a href="#">hem</a></li>
           <li><a href="#">shop</a></li> -->
         <li>
-          <a href="#" id="kundvagnSymbol"
+          <a href="#" id="cartSymbol"
             ><i class="fa-solid fa-cart-shopping"></i><span>0</span></a
           >
         </li>
@@ -86,28 +86,28 @@
     <section class="thirdPageCheckoutForm">
       <section class="checkOut">
         <h2>Kundvagn</h2>
-        <div class="kundvagn-flex">
-          <div id="donuts-kundvagn">
+        <div class="cart-flex">
+          <div id="donuts-cart">
             <h3>Varukorgen är tom</h3>
           </div>
-          <div class="kundkorg-info">
+          <div class="cart-info">
             <div>
-              <label for="rabattkod">Har du en rabattkod?</label>
-              <div class="rabatt-flex">
+              <label for="discount">Har du en rabattkod?</label>
+              <div class="discount-flex">
                 <input
                   type="text"
                   name="rabattkod"
                   placeholder="rabattkod"
-                  id="rabattkod"
+                  id="discount"
                 />
-                <button id="rabatt-knapp" onclick="rabatt()">
+                <button id="discountBtn" onclick="discountFunction()">
                   Aktivera rabatt
                 </button>
               </div>
             </div>
-            <p id="totalpris">Pris: 0 kr</p>
-            <p id="fraktpris"></p>
-            <p id="prisInkFrakt"></p>
+            <p id="totalPrice">Pris: 0 kr</p>
+            <p id="shippingPrice"></p>
+            <p id="priceWithShipping"></p>
           </div>
         </div>
         <button class="btn">Till betalning</button>
@@ -261,11 +261,17 @@
             jag vill prenumerera på nyhetsbrev!
           </label>
           <label>
-            <input type="checkbox" id="approvedGDPR" name="approvedGDPR" /> Yes, jag godkänner
-            behandling av personuppgifter!
+            <input type="checkbox" id="approvedGDPR" name="approvedGDPR" /> Yes,
+            jag godkänner behandling av personuppgifter!
           </label>
-          <input disabled type="button" value="Fyll i formuläret för att fortsätta..." class="btn" id="sendOrder"/>
-        </form>        
+          <input
+            disabled
+            type="button"
+            value="Fyll i formuläret för att fortsätta..."
+            class="btn"
+            id="sendOrder"
+          />
+        </form>
       </section>
     </section>
 

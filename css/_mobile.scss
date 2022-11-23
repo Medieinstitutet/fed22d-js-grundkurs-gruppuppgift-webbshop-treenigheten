@@ -72,7 +72,7 @@ nav {
       color: $light--color;
     }
   }
-  #kundvagnSymbol{
+  #cartSymbol{
     span{
       background: $accent-color;
       font-size: 1.2rem;
@@ -218,7 +218,7 @@ header {
   margin: 20px auto;
 }
 
-#donuts-kundvagn {
+#donuts-cart {
   text-align: left;
   // display: flex;
   h3 {
@@ -244,7 +244,7 @@ header {
   }
 }
 
-.kundkorg-info {
+.cart-info {
   input {
     margin-bottom: 0;
   }
@@ -264,13 +264,13 @@ header {
       background-color: $dark--color;
     }
   }
-  #totalpris,
-  #fraktpris,
-  #prisInkFrakt {
+  #totalPrice,
+  #shippingPrice,
+  #priceWithShipping {
     font-size: 1rem;
     line-height: 2rem;
   }
-  #prisInkFrakt {
+  #priceWithShipping {
     font-size: 1.3rem;
   }
 }
@@ -376,4 +376,11 @@ label {
   background-size: cover;
   background-attachment: fixed;
   color: red;
+  p, h1, h2, h3, span, button, a, label{
+    color: red;
+  }
+  #cartSymbol{
+    span{
+      background: darkgreen;}
+    }
 }
