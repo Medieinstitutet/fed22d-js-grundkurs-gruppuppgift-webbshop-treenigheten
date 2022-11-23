@@ -5,6 +5,9 @@ $accent-color: #ea5c91;
 $soft--light: #ede5d5;
 
 //general
+html{
+  scroll-behavior: smooth;
+}
 body{
   background: $soft--light;
 }
