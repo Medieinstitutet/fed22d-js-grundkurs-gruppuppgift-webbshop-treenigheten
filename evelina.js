@@ -25,10 +25,10 @@ console.log(day)
 
 //skapar numret på aktuell vecka
 startDate = new Date(d.getFullYear(), 0, 1);
-var days = Math.floor((d - startDate) /
+let days = Math.floor((d - startDate) /
         (24 * 60 * 60 * 1000));
           
-var weekNumber = Math.ceil(days / 7);
+let weekNumber = Math.ceil(days / 7);
 console.log(weekNumber)
 
 // skapar aktuellt klockslag

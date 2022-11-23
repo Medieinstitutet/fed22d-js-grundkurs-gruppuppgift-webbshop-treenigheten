@@ -12,7 +12,6 @@
     <link rel="stylesheet" href="css/style.css" />
     <!-- Adobe fonts -->
     <link rel="stylesheet" href="https://use.typekit.net/ols8guo.css" />
-    <link rel="stylesheet" href="https://use.typekit.net/ols8guo.css" />
     <!-- Bootstrap Icons -->
     <link
       rel="stylesheet"
@@ -43,7 +42,7 @@
         <!-- <li><a href="#">hem</a></li>
           <li><a href="#">shop</a></li> -->
         <li>
-          <a href="#" id="cartSymbol"
+          <a href="#cartAndPrice" id="cartSymbol"
             ><i class="fa-solid fa-cart-shopping"></i><span>0</span></a
           >
         </li>
@@ -65,7 +64,7 @@
           >
         </h1>
         <p>Saftiga munkar som sända från ovan</p>
-        <a href="#">Beställ nu!</a>
+        <a href="#shop">Beställ nu!</a>
       </div>
     </header>
 
@@ -84,7 +83,7 @@
     <!-- NIKOLAJ -->
 
     <section class="thirdPageCheckoutForm">
-      <section class="checkOut">
+      <section class="checkOut" id="cartAndPrice">
         <h2>Kundvagn</h2>
         <div class="cart-flex">
           <div id="donuts-cart">
@@ -110,11 +109,13 @@
             <p id="priceWithShipping"></p>
           </div>
         </div>
-        <button class="btn">Till betalning</button>
+        <button class="btn" onclick="window.location.href='#userForm'">
+          Till betalning
+        </button>
         <button class="btn" id="clearBtn">Rensa varukorgen</button>
       </section>
 
-      <section class="userForm">
+      <section class="userForm" id="userForm">
         <form>
           <div class="row">
             <div class="col-50">

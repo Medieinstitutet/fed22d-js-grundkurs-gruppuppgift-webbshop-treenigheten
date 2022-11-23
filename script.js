@@ -216,15 +216,17 @@ let dd = String(d.getDate()).padStart(2, '0');
 let mm = String(d.getMonth() + 1).padStart(2, '0'); //January is 0!
 let today = mm + '/' + dd;
 
+console.log(dd)
+
 // Skapar veckodag 0-6 0 = söndag, 1 = måndag osv.
 let day = d.getDay();
 
 //skapar numret på aktuell vecka
 startDate = new Date(d.getFullYear(), 0, 1);
-var days = Math.floor((d - startDate) /
+let days = Math.floor((d - startDate) /
         (24 * 60 * 60 * 1000));
           
-var weekNumber = Math.ceil(days / 7);
+let weekNumber = Math.ceil(days / 7);
 
 // skapar aktuellt klockslag
 let hours = d.getHours()
@@ -284,14 +286,14 @@ for (let i = 0; i < donutArray.length; i ++){
     //Skriver ut donuts i kundvagnen
     if (donutArray[i].quantity > 0) {
         cart.innerHTML += `
-        <div>
-            <img src = "${donutArray[i].picture1}">
-            <ul>
-                <li><span>${donutArray[i].name}</span></li>
-                <li>${donutArray[i].quantity} st á ${donutArray[i].price} kr/st</li>
-                <li>totalt ${totalDonutPrice} kr</li>
-            </ul>
-        </div>`
+            <div>
+                <img src = "${donutArray[i].picture1}">
+                <ul>
+                    <li><span>${donutArray[i].name}</span></li>
+                    <li>${donutArray[i].quantity} st á ${donutArray[i].price} kr/st</li>
+                    <li>totalt ${totalDonutPrice} kr</li>
+                </ul>
+            </div>`
 
         totalPrice.textContent = `Pris: ${total} kr`
     } 
@@ -306,7 +308,7 @@ if(weekNumber % 2 == 0 && day === 2 && totalt > 25){
     totalPrice.innerHTML = `Tisdag jämn vecka, 25% rabatt!<br>Totalpris: ${total} kr`
     }
 
-// luciabulle på köpet
+// luciabulle på köpet, får det inte att funka med (dd === 13 && mm === 12) varför??
 
 else if (today === "12/13"){
     totalPrice.innerHTML = `Totalpris: ${total} kr<br>Du får en luciabulle på köpet!`;
