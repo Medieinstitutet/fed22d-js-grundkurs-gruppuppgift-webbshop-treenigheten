@@ -109,9 +109,14 @@
             <p id="priceWithShipping"></p>
           </div>
         </div>
+
+        <button class="btn" id="goToCheckOut"><a href="#userForm">Fortsätt till betalning</a></button>
+        <!--
         <button class="btn" onclick="window.location.href='#userForm'">
           Till betalning
         </button>
+        --!>
+
         <button class="btn" id="clearBtn">Rensa varukorgen</button>
       </section>
 
@@ -179,9 +184,18 @@
                   <input type="text" id="zip" name="zip" placeholder="13337" />
                 </div>
               </div>
-              <button type="button" class="btn clear" id="clearFormButton">
-                Rensa formulär
-              </button>
+              <div class="row">
+                <div class="col-50">
+                  <button type="button" class="btn clear" id="clearFormButton">
+                    Rensa formulär
+                  </button>
+                </div>
+                <div class="col-50">
+                  <button type="button" class="btn clear" id="buyMoreDonuts">
+                    <a href="#shop">Tillbaka till shoppen</a>
+                  </button>
+                </div>
+              </div>
             </div>
 
             <div class="col-50">
@@ -191,7 +205,7 @@
               <select id="paymentMethod" name="paymentMethod">
                 <option value="nooption">Välj betalmetod</option>
                 <option value="kort">Kort</option>
-                <option value="faktura">Faktura</option>
+                <option value="faktura" id="paymentFaktura">Faktura</option>
               </select>
               <div class="errorInput"></div>
               <label hidden="true" for="personnum"
