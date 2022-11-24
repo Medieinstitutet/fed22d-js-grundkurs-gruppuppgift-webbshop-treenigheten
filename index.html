@@ -85,185 +85,106 @@
       </div>
 
       <button class="btn" id="goToCheckOut"><a href="#userForm">Fortsätt till betalning</a></button>
-      <!--
-        <button class="btn" onclick="window.location.href='#userForm'">
-          Till betalning
-        </button>
-        --!>
 
-        <button class="btn" id="clearBtn">Rensa varukorgen</button>
-      </section>
+      <button class="btn" id="clearBtn">Rensa varukorgen</button>
+    </section>
 
-      <section class="userForm" id="userForm">
-        <form>
-          <div class="row">
-            <div class="col-50">
-              <h3>Betalinformation</h3>
-              <div class="errorInput"></div>
-              <label for="fname">Förnamn (required)</label>
-              <input
-                type="text"
-                id="fname"
-                name="firstname"
-                placeholder="Hung"
-              />
-              <label for="lname">Efternamn (required)</label>
-              <input
-                type="text"
-                id="lname"
-                name="lastname"
-                placeholder="Rigg"
-              />
-              <label for="email">Epost (required)</label>
-              <input
-                type="text"
-                id="email"
-                name="email"
-                placeholder="skicka@epost.se"
-              />
+    <section class="userForm" id="userForm">
+      <form>
+        <div class="row">
+          <div class="col-50">
+            <h3>Betalinformation</h3>
+            <div class="errorInput"></div>
+            <label for="fname">Förnamn (required)</label>
+            <input type="text" id="fname" name="firstname" placeholder="Hung" />
+            <label for="lname">Efternamn (required)</label>
+            <input type="text" id="lname" name="lastname" placeholder="Rigg" />
+            <label for="email">Epost (required)</label>
+            <input type="text" id="email" name="email" placeholder="skicka@epost.se" />
 
-              <div class="row">
-                <div class="col-75">
-                  <label for="adr">Gatuadress (required)</label>
-                  <input
-                    type="text"
-                    id="adr"
-                    name="address"
-                    placeholder="Givmunkar 12B"
-                  />
-                </div>
-                <div class="col-25">
-                  <label for="adr">Portkod</label>
-                  <input
-                    type="text"
-                    id="portkod"
-                    name="portkod"
-                    placeholder="1234"
-                  />
-                </div>
+            <div class="row">
+              <div class="col-75">
+                <label for="adr">Gatuadress (required)</label>
+                <input type="text" id="adr" name="address" placeholder="Givmunkar 12B" />
               </div>
-
-              <div class="row">
-                <div class="col-50">
-                  <label for="city">Ort (required)</label>
-                  <input
-                    type="text"
-                    id="city"
-                    name="city"
-                    placeholder="Munkfors"
-                  />
-                </div>
-                <div class="col-50">
-                  <label for="zip">Postnr (required)</label>
-                  <input type="text" id="zip" name="zip" placeholder="13337" />
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-50">
-                  <button type="button" class="btn clear" id="clearFormButton">
-                    Rensa formulär
-                  </button>
-                </div>
-                <div class="col-50">
-                  <button type="button" class="btn clear" id="buyMoreDonuts">
-                    <a href="#shop">Tillbaka till shoppen</a>
-                  </button>
-                </div>
+              <div class="col-25">
+                <label for="adr">Portkod</label>
+                <input type="text" id="portkod" name="portkod" placeholder="1234" />
               </div>
             </div>
 
-            <div class="col-50">
-              <h3>Betalmetod</h3>
-
-              <label for="paymentMethod">Välj betalmetod:</label>
-              <select id="paymentMethod" name="paymentMethod">
-                <option value="nooption">Välj betalmetod</option>
-                <option value="kort">Kort</option>
-                <option value="faktura" id="paymentFaktura">Faktura</option>
-              </select>
-              <div class="errorInput"></div>
-              <label hidden="true" for="personnum"
-                >Personnummer (required)</label
-              >
-              <input
-                type="text"
-                id="personnum"
-                name="personnumber"
-                placeholder="ÅÅMMDD1234"
-                hidden="true"
-              />
-              <label hidden="true" for="cname">Namn på kortet</label>
-              <input
-                type="text"
-                id="cname"
-                name="cardname"
-                placeholder="Hung Rigg"
-                data-operator="creditcard"
-                hidden="true"
-              />
-              <label hidden="true" for="ccnum">Betalkorts nummer</label>
-              <input
-                type="text"
-                id="ccnum"
-                name="cardnumber"
-                placeholder="1111-2222-3333-4444"
-                data-operator="creditcard"
-                hidden="true"
-              />
-              <label hidden="true" for="expmonth">Utgångs Månad</label>
-              <input
-                type="text"
-                id="expmonth"
-                name="expmonth"
-                placeholder="januari"
-                data-operator="creditcard"
-                hidden="true"
-              />
-              <div class="row">
-                <div class="col-50">
-                  <label hidden="true" for="expyear">Utgångs År</label>
-                  <input
-                    type="text"
-                    id="expyear"
-                    name="expyear"
-                    placeholder="1984"
-                    data-operator="creditcard"
-                    hidden="true"
-                  />
-                </div>
-                <div class="col-50">
-                  <label hidden="true" for="cvv">CVV</label>
-                  <input
-                    type="text"
-                    id="cvv"
-                    name="cvv"
-                    placeholder="123"
-                    data-operator="creditcard"
-                    hidden="true"
-                  />
-                </div>
+            <div class="row">
+              <div class="col-50">
+                <label for="city">Ort (required)</label>
+                <input type="text" id="city" name="city" placeholder="Munkfors" />
+              </div>
+              <div class="col-50">
+                <label for="zip">Postnr (required)</label>
+                <input type="text" id="zip" name="zip" placeholder="13337" />
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-50">
+                <button type="button" class="btn clear" id="clearFormButton">
+                  Rensa formulär
+                </button>
+              </div>
+              <div class="col-50">
+                <button type="button" class="btn clear" id="buyMoreDonuts">
+                  <a href="#shop">Tillbaka till shoppen</a>
+                </button>
               </div>
             </div>
           </div>
-          <label>
-            <input type="checkbox" checked="checked" name="newsletter" /> Yes,
-            jag vill prenumerera på nyhetsbrev!
-          </label>
-          <label>
-            <input type="checkbox" id="approvedGDPR" name="approvedGDPR" /> Yes,
-            jag godkänner behandling av personuppgifter!
-          </label>
-          <input
-            disabled
-            type="button"
-            value="Fyll i formuläret för att fortsätta..."
-            class="btn"
-            id="sendOrder"
-          />
-        </form>
-      </section>
-    </section>
 
-    <script src="script.js"></script>
-  </body>
+          <div class="col-50">
+            <h3>Betalmetod</h3>
+
+            <label for="paymentMethod">Välj betalmetod:</label>
+            <select id="paymentMethod" name="paymentMethod">
+              <option value="nooption">Välj betalmetod</option>
+              <option value="kort">Kort</option>
+              <option value="faktura" id="paymentFaktura">Faktura</option>
+            </select>
+            <div class="errorInput"></div>
+            <label hidden="true" for="personnum">Personnummer (required)</label>
+            <input type="text" id="personnum" name="personnumber" placeholder="ÅÅMMDD1234" hidden="true" />
+            <label hidden="true" for="cname">Namn på kortet</label>
+            <input type="text" id="cname" name="cardname" placeholder="Hung Rigg" data-operator="creditcard"
+              hidden="true" />
+            <label hidden="true" for="ccnum">Betalkorts nummer</label>
+            <input type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444" data-operator="creditcard"
+              hidden="true" />
+            <label hidden="true" for="expmonth">Utgångs Månad</label>
+            <input type="text" id="expmonth" name="expmonth" placeholder="januari" data-operator="creditcard"
+              hidden="true" />
+            <div class="row">
+              <div class="col-50">
+                <label hidden="true" for="expyear">Utgångs År</label>
+                <input type="text" id="expyear" name="expyear" placeholder="1984" data-operator="creditcard"
+                  hidden="true" />
+              </div>
+              <div class="col-50">
+                <label hidden="true" for="cvv">CVV</label>
+                <input type="text" id="cvv" name="cvv" placeholder="123" data-operator="creditcard" hidden="true" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <label>
+          <input type="checkbox" checked="checked" name="newsletter" /> Yes,
+          jag vill prenumerera på nyhetsbrev!
+        </label>
+        <label>
+          <input type="checkbox" id="approvedGDPR" name="approvedGDPR" /> Yes,
+          jag godkänner behandling av personuppgifter!
+        </label>
+        <input disabled type="button" value="Fyll i formuläret för att fortsätta..." class="btn" id="sendOrder" />
+      </form>
+    </section>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+
 </html>
