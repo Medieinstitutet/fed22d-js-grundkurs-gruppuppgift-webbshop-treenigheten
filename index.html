@@ -12,7 +12,6 @@
     <link rel="stylesheet" href="css/style.css" />
     <!-- Adobe fonts -->
     <link rel="stylesheet" href="https://use.typekit.net/ols8guo.css" />
-    <link rel="stylesheet" href="https://use.typekit.net/ols8guo.css" />
     <!-- Bootstrap Icons -->
     <link
       rel="stylesheet"
@@ -43,7 +42,7 @@
         <!-- <li><a href="#">hem</a></li>
           <li><a href="#">shop</a></li> -->
         <li>
-          <a href="#" id="kundvagnSymbol"
+          <a href="#cartAndPrice" id="cartSymbol"
             ><i class="fa-solid fa-cart-shopping"></i><span>0</span></a
           >
         </li>
@@ -65,7 +64,7 @@
           >
         </h1>
         <p>Saftiga munkar som sända från ovan</p>
-        <a href="#">Beställ nu!</a>
+        <a href="#shop">Beställ nu!</a>
       </div>
     </header>
 
@@ -84,33 +83,40 @@
     <!-- NIKOLAJ -->
 
     <section class="thirdPageCheckoutForm">
-      <section class="checkOut">
+      <section class="checkOut" id="cartAndPrice">
         <h2>Kundvagn</h2>
-        <div class="kundvagn-flex">
-          <div id="donuts-kundvagn">
+        <div class="cart-flex">
+          <div id="donuts-cart">
             <h3>Varukorgen är tom</h3>
           </div>
-          <div class="kundkorg-info">
+          <div class="cart-info">
             <div>
-              <label for="rabattkod">Har du en rabattkod?</label>
-              <div class="rabatt-flex">
+              <label for="discount">Har du en rabattkod?</label>
+              <div class="discount-flex">
                 <input
                   type="text"
                   name="rabattkod"
                   placeholder="rabattkod"
-                  id="rabattkod"
+                  id="discount"
                 />
-                <button id="rabatt-knapp" onclick="rabatt()">
+                <button id="discountBtn" onclick="discountFunction()">
                   Aktivera rabatt
                 </button>
               </div>
             </div>
-            <p id="totalpris">Pris: 0 kr</p>
-            <p id="fraktpris"></p>
-            <p id="prisInkFrakt"></p>
+            <p id="totalPrice">Pris: 0 kr</p>
+            <p id="shippingPrice"></p>
+            <p id="priceWithShipping"></p>
           </div>
         </div>
+
         <button class="btn" id="goToCheckOut"><a href="#userForm">Fortsätt till betalning</a></button>
+        <!--
+        <button class="btn" onclick="window.location.href='#userForm'">
+          Till betalning
+        </button>
+        --!>
+
         <button class="btn" id="clearBtn">Rensa varukorgen</button>
       </section>
 
@@ -270,11 +276,17 @@
             jag vill prenumerera på nyhetsbrev!
           </label>
           <label>
-            <input type="checkbox" id="approvedGDPR" name="approvedGDPR" /> Yes, jag godkänner
-            behandling av personuppgifter!
+            <input type="checkbox" id="approvedGDPR" name="approvedGDPR" /> Yes,
+            jag godkänner behandling av personuppgifter!
           </label>
-          <input disabled type="button" value="Fyll i formuläret för att fortsätta..." class="btn" id="sendOrder"/>
-        </form>        
+          <input
+            disabled
+            type="button"
+            value="Fyll i formuläret för att fortsätta..."
+            class="btn"
+            id="sendOrder"
+          />
+        </form>
       </section>
     </section>
 

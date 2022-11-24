@@ -5,7 +5,8 @@ $accent-color: #ea5c91;
 $soft--light: #ede5d5;
 
 //general
-html {
+
+html{
   scroll-behavior: smooth;
 }
 
@@ -78,7 +79,7 @@ nav {
       color: $light--color;
     }
   }
-  #kundvagnSymbol{
+  #cartSymbol{
     span{
       background: $accent-color;
       font-size: 1.2rem;
@@ -277,7 +278,7 @@ header {
   margin: 20px auto;
 }
 
-#donuts-kundvagn {
+#donuts-cart {
   text-align: left;
   // display: flex;
   h3 {
@@ -303,7 +304,11 @@ header {
   }
 }
 
-.kundkorg-info {
+.cart-info {
+  background: $soft--light;
+  border: 1px solid $dark--color;
+  padding: 20px 10px;
+  border-radius: 25px;
   input {
     margin-bottom: 0;
   }
@@ -323,13 +328,13 @@ header {
       background-color: $dark--color;
     }
   }
-  #totalpris,
-  #fraktpris,
-  #prisInkFrakt {
+  #totalPrice,
+  #shippingPrice,
+  #priceWithShipping {
     font-size: 1rem;
     line-height: 2rem;
   }
-  #prisInkFrakt {
+  #priceWithShipping {
     font-size: 1.3rem;
   }
 }
@@ -435,4 +440,12 @@ label {
   background: url("/images/christmas.jpg");
   background-size: cover;
   background-attachment: fixed;
+  color: red;
+  p, h1, h2, h3, span, button, a, label{
+    color: red;
+  }
+  #cartSymbol{
+    span{
+      background: darkgreen;}
+    }
 }
