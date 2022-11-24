@@ -76,7 +76,7 @@ nav {
     margin-top: 2px;
     cursor: pointer;
     &:hover {
-      color: $light--color;
+      color: $accent-color;
     }
   }
   #cartSymbol {
@@ -205,6 +205,10 @@ header {
   button{
     background: transparent;
     border: none;
+    cursor: pointer;
+    &:hover{
+      color: $accent-color;
+    }
   }
 }
 
