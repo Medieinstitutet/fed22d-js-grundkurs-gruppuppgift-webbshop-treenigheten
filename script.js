@@ -10,7 +10,7 @@ const donutArray = [
         name: 'Socker Munk',                 // Munkens Namn
         price: 25,                           // Munkens Pris
         quantity: 0,                         // Antal Munkar
-        category: 'Budget',                  // Munkens Kategori  Budget/Economy/Deluxe
+        category: '01Budget',                  // Munkens Kategori  Budget/Economy/Deluxe
         rating: 1                            // Munkens Rating 1-5 stjärnor
     },
     {
@@ -18,9 +18,9 @@ const donutArray = [
         picture1: "images/donut_2.png",
         picture2: "images/donut_2_two.png",
         name: 'Choklad Munk',
-        price: 25,
+        price: 28,
         quantity: 0,
-        category: 'Budget',
+        category: '01Budget',
         rating: 3
     },
     { 
@@ -28,9 +28,9 @@ const donutArray = [
         picture1: "images/donut_3.png",
         picture2: "images/donut_3_two.png",
         name: 'Vanilj Munk',
-        price: 25,
+        price: 20,
         quantity: 0,
-        category: 'Budget',
+        category: '01Budget',
         rating: 2
     },
     {
@@ -38,9 +38,9 @@ const donutArray = [
         picture1: "images/donut_4.png",
         picture2: "images/donut_4_two.png",
         name: 'Äppel Munk',
-        price: 25,
+        price: 29,
         quantity: 0,
-        category: 'Budget',
+        category: '01Budget',
         rating: 1
     },
     {
@@ -48,9 +48,9 @@ const donutArray = [
         picture1: "images/donut_5.png",
         picture2: "images/donut_5_two.png",
         name: 'Saffrans Munk',
-        price: 25,
+        price: 21,
         quantity: 0,
-        category: 'Economy',
+        category: '02Economy',
         rating: 1
     },
     {
@@ -58,9 +58,9 @@ const donutArray = [
         picture1: "images/donut_6.png",
         picture2: "images/donut_6_two.png",
         name: 'Kokos Munk',
-        price: 35,
+        price: 33,
         quantity: 0,
-        category: 'Economy',
+        category: '02Economy',
         rating: 3
     },
     {
@@ -68,9 +68,9 @@ const donutArray = [
         picture1: "images/donut_7.png",
         picture2: "images/donut_7_two.png",
         name: 'Citron Munk',
-        price: 35,
+        price: 32,
         quantity: 0,
-        category: 'Economy',
+        category: '02Economy',
         rating: 3
     },
     {
@@ -80,7 +80,7 @@ const donutArray = [
         name: 'Blåbärs Munk',
         price: 35,
         quantity: 0,
-        category: 'Economy',
+        category: '02Economy',
         rating: 4
     },
     {
@@ -90,7 +90,7 @@ const donutArray = [
         name: 'Holy Munk',
         price: 45,
         quantity: 0,
-        category: 'Deluxe',
+        category: '03Deluxe',
         rating: 5
     },
     {
@@ -98,9 +98,9 @@ const donutArray = [
         picture1: "images/donut_10.png",
         picture2: "images/donut_10_two.png",
         name: 'Ängla Munk',
-        price: 45,
+        price: 42,
         quantity: 0,
-        category: 'Deluxe',
+        category: '03Deluxe',
         rating: 4
     },
     {
@@ -108,9 +108,9 @@ const donutArray = [
         picture1: "images/donut_11.png",
         picture2: "images/donut_11_two.png",
         name: 'Gloria Munk',
-        price: 45,
+        price: 55,
         quantity: 0,
-        category: 'Deluxe',
+        category: '03Deluxe',
         rating: 4
     },
     {
@@ -118,9 +118,9 @@ const donutArray = [
         picture1: "images/donut_12.png",
         picture2: "images/donut_12_two.png",
         name: 'Gudomlig Munk',
-        price: 45,
+        price: 60,
         quantity: 0,
-        category: 'Deluxe',
+        category: '03Deluxe',
         rating: 5
     },   
 ]
@@ -157,9 +157,9 @@ let generateDonuts = () => {  // Denna funktion skapar nya munkar i html struktu
             <div class="price-quantity">
     
                 <div class="buttons">
-                    <i onclick="removeDonut(${id})" class="bi bi-dash-circle-fill"></i>
+                    <button onclick="removeDonut(${id})" class="bi bi-dash-circle-fill"></button>
                     <div id=${id} class="quantity">${quantity}</div>
-                    <i onclick="addDonut(${id})" class="bi bi-plus-circle-fill"></i>
+                    <button onclick="addDonut(${id})" class="bi bi-plus-circle-fill"></button>
                 </div>
             </div>
         </div>
@@ -207,6 +207,50 @@ let updateQuantity = (id) => {
     noFaktura();
     
 };
+
+// --- Sortera Munkar --- //
+
+const nameBtn = document.querySelector('#sortName');
+const priceBtn = document.querySelector('#sortPrice');
+const ratingBtn = document.querySelector('#sortRating');
+const categoryBtn = document.querySelector('#sortCategory');
+
+
+// Sortera efter Namn
+
+nameBtn.addEventListener('click', sortName);
+
+function sortName() {
+     donutArray.sort((prod1, prod2) => prod1.name.localeCompare(prod2.name,'se-SV'));
+        generateDonuts ();             
+}
+
+// Sortera efter Rating
+
+ratingBtn.addEventListener('click', sortRating);
+
+function sortRating() {
+     donutArray.sort((prod1, prod2) => prod1.rating - prod2.rating);
+        generateDonuts ();             
+}
+
+// Sortera efter Category
+
+categoryBtn.addEventListener('click', sortCategory);
+
+function sortCategory() {
+     donutArray.sort((prod1, prod2) => prod1.category.localeCompare(prod2.category,'se-SV'));
+        generateDonuts ();             
+}
+
+// Sortera efter Price
+
+priceBtn.addEventListener('click', sortPrice);
+
+function sortPrice() {
+    donutArray.sort((prod1, prod2) => prod1.price - prod2.price);
+    generateDonuts ();              
+}
 
 
 // ----- NIKOLAJ ----- //
@@ -320,7 +364,7 @@ specialOffers()
 
 function specialOffers(){
 // rabatt för tisdag och jämn vecka
-if(weekNumber % 2 == 0 && day === 2 && totalt > 25){
+if(weekNumber % 2 == 0 && day === 2 && total > 25){
     total = total * 0.75;
     totalPrice.innerHTML = `Tisdag jämn vecka, 25% rabatt!<br>Totalpris: ${total} kr`
     }
@@ -339,7 +383,7 @@ else if (today === "12/13"){
 }
 
 //Om lucia och jämn vecka och tisdag
-else if(weekNumber % 2 == 0 && day === 3 && totalt > 25 && today === "12/13"){
+else if(weekNumber % 2 == 0 && day === 3 && total > 25 && today === "12/13"){
     total = total * 0.75;
     totalPrice.innerHTML = `Tisdag jämn vecka, 25% rabatt!<br> Totalpris: ${total} kr.<br> Du får dessutom luciabulle på köpet!` 
 }
@@ -474,7 +518,7 @@ function backToShop() {
 
 //funktion för dyrt för faktura
 function noFaktura() {
-    if (totalt > 800) {
+    if (total > 800) {
         paymentFaktura.value = 'Endast kortköp över 800kr';
         paymentFaktura.textContent = 'Endast kortköp över 800kr';
     }
@@ -629,7 +673,7 @@ function checkAddressIfOk(){
 }
 
 function sendDonutOrder(){
-    alert(` Tack för beställningen ${firstNameInput.value}! \n Vi skickar ${antalDonuts} munkar till ${addressInput.value} \n Totaltpris: ${totalt} kr \n Förväntad leverans tid VARIABEL`)
+    alert(` Tack för beställningen ${firstNameInput.value}! \n Vi skickar ${donutsAmount} munkar till ${addressInput.value} \n Totaltpris: ${total} kr \n Förväntad leverans tid VARIABEL`)
 }
 
 // = = = = Kopplar funktioner till tryck/changes = = = = //

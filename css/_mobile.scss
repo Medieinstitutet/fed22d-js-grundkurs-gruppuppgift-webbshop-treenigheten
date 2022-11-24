@@ -6,13 +6,12 @@ $soft--light: #ede5d5;
 
 //general
 
-html{
+html {
   scroll-behavior: smooth;
 }
 
-body{
+body {
   background: $soft--light;
-  
 }
 
 .shop {
@@ -68,19 +67,19 @@ nav {
       text-decoration: underline;
     }
   }
-  button{
+  button {
     color: $dark--color;
     background: transparent;
     border: none;
     font-size: 1.7rem;
     margin-top: 2px;
     cursor: pointer;
-    &:hover{
+    &:hover {
       color: $light--color;
     }
   }
-  #cartSymbol{
-    span{
+  #cartSymbol {
+    span {
       background: $accent-color;
       font-size: 1.2rem;
       border-radius: 20px;
@@ -146,8 +145,8 @@ header {
   }
 }
 
-.sort-bar{
-  button{
+.sort-bar {
+  button {
     background: transparent;
     border: none;
     margin-bottom: 30px;
@@ -216,37 +215,32 @@ header {
   i:hover {
     color: $accent-color;
   }
-} 
-
+}
 
 // style för rating stars //
 .description p {
-
   font-size: 1.5rem;
 
-  .ratingStars1:nth-child(1){
+  .ratingStars1:nth-child(1) {
     color: $accent-color;
   }
-  
-  .ratingStars2:nth-child(-n+2) {
+
+  .ratingStars2:nth-child(-n + 2) {
     color: $accent-color;
   }
-  
-  .ratingStars3:nth-child(-n+3) {
+
+  .ratingStars3:nth-child(-n + 3) {
     color: $accent-color;
   }
-  
-  .ratingStars4:nth-child(-n+4) {
+
+  .ratingStars4:nth-child(-n + 4) {
     color: $accent-color;
   }
-  
+
   .ratingStars5 {
     color: $accent-color;
   }
 }
-
-
-
 
 // NIKOLAJ SLUT //
 
@@ -284,20 +278,20 @@ header {
   h3 {
     text-align: center;
   }
-  div{
+  div {
     display: flex;
     margin-bottom: 40px;
   }
-  img{
+  img {
     width: 100px;
     height: 100px;
     border: 1px solid $dark--color;
-    border-radius:10px;
+    border-radius: 10px;
   }
   ul {
     list-style-type: none;
-    li{
-      span{
+    li {
+      span {
         font-size: 1.2rem;
       }
     }
@@ -351,7 +345,7 @@ header {
   border-radius: 25px;
   width: 90%;
   margin: 20px auto;
-  visibility: hidden; 
+  visibility: hidden;
 }
 
 .row {
@@ -421,7 +415,7 @@ label {
   background-color: red;
 }
 
-.dark-theme{
+.dark-theme {
   background: $middle--color;
   color: $light--color;
   .item {
@@ -429,23 +423,32 @@ label {
     background: $dark--color;
     color: $light--color;
   }
-  .checkOut, .userForm {
+  .checkOut,
+  .userForm {
     background-color: $dark--color;
     color: $light--color;
     border: 1px solid $dark--color;
   }
 }
 
-.christmas-theme{
+.christmas-theme {
   background: url("/images/christmas.jpg");
   background-size: cover;
   background-attachment: fixed;
   color: red;
-  p, h1, h2, h3, span, button, a, label{
+  p,
+  h1,
+  h2,
+  h3,
+  span,
+  button,
+  a,
+  label {
     color: red;
   }
-  #cartSymbol{
-    span{
-      background: darkgreen;}
+  #cartSymbol {
+    span {
+      background: darkgreen;
     }
+  }
 }
