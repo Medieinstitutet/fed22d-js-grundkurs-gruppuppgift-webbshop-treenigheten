@@ -486,6 +486,7 @@ const paymentFaktura = document.querySelector('#paymentFaktura');
 const userFormPayment = document.querySelector('.userForm');
 const goToCheckOut = document.querySelector('#goToCheckOut');
 const goToShop = document.querySelector('#buyMoreDonuts');
+const sortBar = document.querySelector('.sort-bar');
 let imgClickCounter = 2;
 
 
@@ -508,13 +509,15 @@ const nextImage = (id) => {
 
 //funktion för betala och stänga shoppen
 function continueToPayment() {
-    shop.style.visibility = 'hidden';
-    userFormPayment.style.visibility = 'visible';
+    shop.style.display = 'none';
+    sortBar.style.display = 'none';
+    userFormPayment.style.display = 'flex';
 }
 
 function backToShop() {
-    shop.style.visibility = 'visible';
-    userFormPayment.style.visibility = 'hidden';
+    shop.style.display = '';
+    sortBar.style.display = '';
+    userFormPayment.style.display = 'none';
 }
 
 //funktion för dyrt för faktura
