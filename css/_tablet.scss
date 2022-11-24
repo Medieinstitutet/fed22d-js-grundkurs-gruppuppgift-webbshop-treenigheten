@@ -68,4 +68,12 @@
       display:flex;
     }
   }
+  .cart-buttons{
+    display: flex;
+    margin: 0 auto;
+    button{
+      width: 200px;
+      margin: 10px;
+    }
+  }
 }

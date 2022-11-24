@@ -266,18 +266,31 @@ const cartSymbol = document.querySelector("#cartSymbol");
 const shippingPrice = document.querySelector("#shippingPrice");
 const priceWithShipping = document.querySelector("#priceWithShipping");
 const darkThemeBtn = document.querySelector("#darkThemeBtn");
+const buttonContainer = document.querySelector("#buttonContainer");
+const sortBtns = buttonContainer.getElementsByClassName("sortBtn");
+
 let donutsAmount = 0;
 let total = 0;
 let cartQuantity = "";
 let shippingprice = 0;
+
+// highlightar aktiv sorteringsknapp
+// Loop through the buttons and add the active class to the current/clicked button
+for (let i = 0; i < sortBtns.length; i++) {
+    sortBtns[i].addEventListener("click", function() {
+      let current = document.getElementsByClassName("active");
+      if (current.length > 0) {
+        current[0].className = current[0].className.replace(" active", "");
+      }
+      this.className += " active";
+    });
+  }
 
 const d = new Date();
 // skapar dagens datum (månad/datum)
 let dd = String(d.getDate()).padStart(2, '0');
 let mm = String(d.getMonth() + 1).padStart(2, '0'); //January is 0!
 let today = mm + '/' + dd;
-
-console.log(dd)
 
 // Skapar veckodag 0-6 0 = söndag, 1 = måndag osv.
 let day = d.getDay();
@@ -454,6 +467,7 @@ function warningTime(){
 darkThemeBtn.addEventListener("click", function(){
     body.classList.toggle("dark-theme");
 })
+
 
 // om julafton julaftontema
 function christmasTheme(){
@@ -673,10 +687,6 @@ function checkAddressIfOk(){
    checkValidForm(); //updaterar våra boolean variablar ifall saker är godkänt eller ej
 }
 
-function sendDonutOrder(){
-    alert(` Tack för beställningen ${firstNameInput.value}! \n Vi skickar ${donutsAmount} munkar till ${addressInput.value} \n Totaltpris: ${total} kr \n Förväntad leverans tid VARIABEL`)
-}
-
 // = = = = Kopplar funktioner till tryck/changes = = = = //
 clearFormButton.addEventListener('click', deleteAllFormInput); //kopplar funktion till knapptryck av "rensa formulär"
 selectPaymentMethod.addEventListener('change', showSelectedPaymentMethod); //kopplar funktion till val av betalmetod
@@ -698,6 +708,32 @@ cityNameInput.addEventListener('change', () => {
 emailInput.addEventListener('change', checkEmailIfOk);
 addressInput.addEventListener('change', checkAddressIfOk);
 gdprInput.addEventListener('change', checkValidForm);
-submitFormButton.addEventListener('click', sendDonutOrder);
+// submitFormButton.addEventListener('click', sendDonutOrder);
 goToCheckOut.addEventListener('click', continueToPayment);
 goToShop.addEventListener('click', backToShop);
+
+
+// popupruta med leveranstid och beställningsbekräftelse
+const deliveryBtn = document.querySelector('#sendOrder'); 
+const deliveryTime = document.querySelector('#deliveryInformation');
+const checkOutPopUp = document.querySelector("#checkOutPopUp");
+
+ deliveryBtn.addEventListener('click', createPopUp);            // På klick så startar eventet timeCheck
+
+  function createPopUp() {
+    checkOutPopUp.style.display = "block";
+    const now = new Date();
+    const hour = now.getHours(); 
+  
+    if (22 <= hour || 5 > hour) {  // Mellan klockan 22:00 och 05:00.
+     deliveryTime.innerHTML = `Tack för beställningen ${firstNameInput.value}! <br> Vi skickar ${donutsAmount} munkar till ${addressInput.value} <br> Totaltpris: ${total} kr <br> Levernstiden förväntas bli 45 minuter.<br>Happy Donuting!`;
+    } else if (
+     now.getDay() === 5 // Dagen är fredag.
+     && hour >= 11 // Klockan är 11:00 eller mer.
+     && hour < 13 // Klocklan är mindre än 13:00.
+    ) {
+     deliveryTime.innerHTML = `Tack för beställningen ${firstNameInput.value}! <br> Vi skickar ${donutsAmount} munkar till ${addressInput.value} <br> Totaltpris: ${total} kr <br>Leveransen beräknas vara framme 15:00.<br>Happy Donuting!`;
+    } else {
+     deliveryTime.innerHTML = `Tack för beställningen ${firstNameInput.value}! <br>Vi skickar ${donutsAmount} munkar till ${addressInput.value} <br>Totaltpris: ${total} kr <br> Leveranstid förväntas bli 30 minuter.<br>Happy Donuting!`;
+    }
+  }
