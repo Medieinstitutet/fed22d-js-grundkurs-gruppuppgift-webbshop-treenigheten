@@ -409,6 +409,7 @@ function discountFunction(){
         total = 0;
         discount.value = "";
         priceWithShipping.innerHTML = `Totalt: ${shippingprice + total} kr`
+        cartSymbol.innerHTML = `<i class="fa-solid fa-cart-shopping"></i><span>${donutsAmount}</span>  ${total} kr`
     }
 
 }
