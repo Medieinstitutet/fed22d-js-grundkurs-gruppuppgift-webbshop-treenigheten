@@ -733,7 +733,13 @@ const checkOutPopUp = document.querySelector("#checkOutPopUp");
      && hour < 13 // Klocklan är mindre än 13:00.
     ) {
      deliveryTime.innerHTML = `Tack för beställningen ${firstNameInput.value}! <br> Vi skickar ${donutsAmount} munkar till ${addressInput.value} <br> Totaltpris: ${total} kr <br>Leveransen beräknas vara framme 15:00.<br>Happy Donuting!`;
-    } else {
+    }   else if (
+        now.getDay() === 6) {
+        return document.getElementById('leveransTid').innerHTML = `Tack för beställningen ${firstNameInput.value}! <br>Vi skickar ${donutsAmount} munkar till ${addressInput.value} <br>Totaltpris: ${total} kr <br> Leveranstid förväntas bli 1 timme & 30 minuter.<br>Happy Donuting!`;
+      } else if (
+        now.getDay() === 7) {
+        return document.getElementById('leveransTid').innerHTML = `Tack för beställningen ${firstNameInput.value}! <br>Vi skickar ${donutsAmount} munkar till ${addressInput.value} <br>Totaltpris: ${total} kr <br> Leveranstid förväntas bli 1 timme & 30 minuter.<br>Happy Donuting!`;
+      } else {
      deliveryTime.innerHTML = `Tack för beställningen ${firstNameInput.value}! <br>Vi skickar ${donutsAmount} munkar till ${addressInput.value} <br>Totaltpris: ${total} kr <br> Leveranstid förväntas bli 30 minuter.<br>Happy Donuting!`;
     }
-  }
+  };
