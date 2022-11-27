@@ -47,39 +47,6 @@
     </div>
   </header>
 
-  <!-- NIKOLAJ -->
-
-  <!-- Price range filter -->
-
-  <h4>Price Range Filter</h4>
-
-  <label for="priceRange">Välj prisklass</label>
-  <select id="priceRange" name="priceRange">
-    <option value="donutPriceOne">30 kr</option>
-    <option value="donutPriceTwo">40 kr</option>
-    <option value="donutPriceThree">70 kr</option>
-  </select>
-
-
-
-
-
-
-
-  <form class="price-form">
-    <!-- <input type="range" min="1" max="3" value="1" class="slider" id="rangeElement"> -->
-    <input type="number" name="min-donut-price" title="Minimum donut price" id="minPrice" class="price-range-input"
-      min="0">
-    <input type="number" id="maxPrice" name="max-donut-price" title="Maximum donut price" class="price-range-input"
-      min="0">
-  </form>
-  <p class="price-value"></p>
-
-
-  <!-- Price range filter -->
-
-
-
   <div class="sort-bar">
     <h3>Sortera efter:</h3>
     <div id="buttonContainer">
@@ -95,6 +62,16 @@
       <button id="sortPrice" class="sortBtn" aria-label="sortera munkar efter pris">
         Pris <i class="fa-solid fa-arrow-down-1-9"></i>
       </button>
+
+      <div style="display: inline-block" class="price-form">
+        <!-- <input type="range" min="1" max="3" value="1" class="slider" id="rangeElement"> -->
+        <input type="number" name="min-donut-price" title="Minsta munk priset." id="minPrice" class="price-range-input"
+          min="0">
+        <span>-</span>
+        <input type="number" id="maxPrice" name="max-donut-price" title="Högsta munk priset." class="price-range-input"
+          min="0">
+        <span>Kr</span>
+      </div>
     </div>
   </div>
 
