@@ -372,7 +372,7 @@ function printCurrentDonuts() {
 
     // 10% rabatt om fler än 10 av en sort
     if (donutArray[i].quantity > 10) {
-      totalDonutPrice = totalDonutPrice * 0.9;
+      totalDonutPrice = Math.round(totalDonutPrice * 0.9);
     }
 
     donutsAmount += donutArray[i].quantity; //räknar ut hur många donuts i varukorgen
