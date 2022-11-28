@@ -41,6 +41,7 @@ a {
 //nav
 
 nav {
+  z-index: 3;
   position: fixed;
   margin: 0;
   width: 100vw;
@@ -75,7 +76,7 @@ nav {
     margin-top: 2px;
     cursor: pointer;
     &:hover {
-      color: $light--color;
+      color: $accent-color;
     }
   }
   #cartSymbol {
@@ -151,6 +152,12 @@ header {
     border: none;
     margin-bottom: 30px;
     cursor: pointer;
+    &:hover{
+      color: $accent-color;
+    }
+  }
+  .active {
+    color: $accent-color;
   }
 }
 
@@ -192,6 +199,17 @@ header {
 
 .bi-plus-circle-fill {
   margin-left: 30px;
+}
+
+.price-quantity{
+  button{
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    &:hover{
+      color: $accent-color;
+    }
+  }
 }
 
 // jesper i nikos del //
@@ -423,11 +441,29 @@ label {
     background: $dark--color;
     color: $light--color;
   }
+  .cart-info{
+    background: $middle--color;
+    color: $soft--light;
+    button{
+      background: $dark--color;
+      &:hover{
+        color: $dark--color;
+        background: $light--color;
+      }
+    }
+  }
   .checkOut,
   .userForm {
     background-color: $dark--color;
     color: $light--color;
     border: 1px solid $dark--color;
+  }
+}
+.cart-buttons{
+  #clearBtn{
+    &:hover{
+      background: red;
+    }
   }
 }
 
@@ -450,5 +486,33 @@ label {
     span {
       background: darkgreen;
     }
+  }
+}
+
+.checkOutPopUp{
+  display: none;
+  position: fixed;
+  top: 0;
+  left:0;
+  z-index: 4;
+  background-color: rgba(0,0,0,0.4);
+  height: 100vh;
+  width: 100vw;
+  #deliveryInformation{
+    background: $soft--light;
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 100px;
+    border: 2px solid $dark--color;
+    color: $dark--color;
+    border-radius: 20px;
+    line-height: 3rem;
+    font-size: 1.5rem;
+    padding: 10px;
+  }
+  img{
+    width: 50%;
+    height: auto;
+    margin: 0 auto;
   }
 }
