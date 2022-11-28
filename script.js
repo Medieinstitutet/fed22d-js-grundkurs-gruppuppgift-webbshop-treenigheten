@@ -311,7 +311,6 @@ let cartQuantity = "";
 let shippingprice = 0;
 
 // highlightar aktiv sorteringsknapp
-// Loop through the buttons and add the active class to the current/clicked button
 for (let i = 0; i < sortBtns.length; i++) {
   sortBtns[i].addEventListener("click", function () {
     let current = document.getElementsByClassName("active");
@@ -510,9 +509,9 @@ function christmasTheme() {
 }
 christmasTheme();
 
-// ta bort rensa varukorg när man går till betalnin
+// ta bort rensa varukorg-knapp när man går till betalning
 
-goToCheckOut.addEventListener("click", removeBin)
+goToCheckOut.addEventListener("click", removeBin);
 
 function removeBin(){
   clearBtn.style.display = 'none';
