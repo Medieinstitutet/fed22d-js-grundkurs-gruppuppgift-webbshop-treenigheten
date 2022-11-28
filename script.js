@@ -302,6 +302,7 @@ const priceWithShipping = document.querySelector("#priceWithShipping");
 const darkThemeBtn = document.querySelector("#darkThemeBtn");
 const buttonContainer = document.querySelector("#buttonContainer");
 const sortBtns = buttonContainer.getElementsByClassName("sortBtn");
+const discountBtn = document.querySelector("#discountBtn");
 
 let donutsAmount = 0;
 let total = 0;
@@ -364,7 +365,6 @@ function printCurrentDonuts() {
   total = 0;
   donutsAmount = 0;
   shippingprice = 0;
-  console.log("kopplar");
 
   for (let i = 0; i < donutArray.length; i++) {
     // räknar ut priset på flera av samma sort
@@ -376,7 +376,7 @@ function printCurrentDonuts() {
     }
 
     donutsAmount += donutArray[i].quantity; //räknar ut hur många donuts i varukorgen
-    total += totalDonutPrice; // räknar it totalsumman av alla donuts
+    total += Math.round(totalDonutPrice); // räknar it totalsumman av alla donuts
 
     if (donutsAmount > 15) {
       shippingprice = 0; // gratis frakt om fler än 15 munkar
@@ -445,6 +445,8 @@ function specialOffers() {
   } else {
   }
 }
+
+discountBtn.addEventListener("click", discountFunction);
 
 // funktion för rabattkod a_damn_fine-cup_of-coffee
 function discountFunction() {
