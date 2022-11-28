@@ -773,7 +773,7 @@ function createPopUp() {
     return (document.getElementById(
       "leveransTid"
     ).innerHTML = `Tack för beställningen ${firstNameInput.value}! <br>Vi skickar ${donutsAmount} munkar till ${addressInput.value} <br>Totaltpris: ${total} kr <br> Leveranstid förväntas bli 1 timme & 30 minuter.<br>Happy Donuting!`);
-  } else if (now.getDay() === 7) {
+  } else if (now.getDay() === 0) {
     return (document.getElementById(
       "leveransTid"
     ).innerHTML = `Tack för beställningen ${firstNameInput.value}! <br>Vi skickar ${donutsAmount} munkar till ${addressInput.value} <br>Totaltpris: ${total} kr <br> Leveranstid förväntas bli 1 timme & 30 minuter.<br>Happy Donuting!`);
