@@ -303,6 +303,7 @@ const darkThemeBtn = document.querySelector("#darkThemeBtn");
 const buttonContainer = document.querySelector("#buttonContainer");
 const sortBtns = buttonContainer.getElementsByClassName("sortBtn");
 const discountBtn = document.querySelector("#discountBtn");
+const goToCheckOut = document.querySelector("#goToCheckOut");
 
 let donutsAmount = 0;
 let total = 0;
@@ -509,6 +510,14 @@ function christmasTheme() {
 }
 christmasTheme();
 
+// ta bort rensa varukorg när man går till betalnin
+
+goToCheckOut.addEventListener("click", removeBin)
+
+function removeBin(){
+  clearBtn.style.display = 'none';
+}
+
 //-=JESPERS KOD=-//
 
 //hittar massa olika html element
@@ -529,7 +538,6 @@ const addressInput = document.querySelector('#adr');
 const gdprInput = document.querySelector('#approvedGDPR');
 const paymentFaktura = document.querySelector('#paymentFaktura');
 const userFormPayment = document.querySelector('.userForm');
-const goToCheckOut = document.querySelector('#goToCheckOut');
 const goToShop = document.querySelector('#buyMoreDonuts');
 const sortBar = document.querySelector('.sort-bar');
 
