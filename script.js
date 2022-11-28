@@ -578,58 +578,43 @@ function noFaktura() {
     paymentFaktura.value = "Endast kortköp över 800kr";
     paymentFaktura.textContent = "Endast kortköp över 800kr";
   }
+
+  if (total < 800) {
+    paymentFaktura.value = "faktura";
+    paymentFaktura.textContent = "faktura";
+  }
 }
 
 //boolean variablar för check av formulär
 //Alla godkända aktiveras knappen submit!
 function checkValidForm() {
-  let validFirstName = firstNameInput.formNoValidate;
-  let validLastName = lastNameInput.formNoValidate;
-  let validEmail = emailInput.formNoValidate;
-  let validAddress = addressInput.formNoValidate;
-  let validCity = cityNameInput.formNoValidate;
-  let validZip = zipcodeInput.formNoValidate;
-  let validPersonnummer = personNummerInput.formNoValidate;
-  let validGDPR = gdprInput.checked;
+    let validFirstName = firstNameInput.formNoValidate;
+    let validLastName = lastNameInput.formNoValidate;
+    let validEmail = emailInput.formNoValidate;
+    let validAddress = addressInput.formNoValidate
+    let validCity = cityNameInput.formNoValidate;
+    let validZip = zipcodeInput.formNoValidate;
+    let validGDPR = gdprInput.checked;
+    let validPersonnummer;
 
-  if (
-    validFirstName &&
-    validLastName &&
-    validEmail &&
-    validAddress &&
-    validCity &&
-    validZip &&
-    validPersonnummer &&
-    validGDPR
-  ) {
-    submitFormButton.removeAttribute("disabled");
-    submitFormButton.value = "Klart! Klicka för att beställa!";
-  } else {
-    //ingethänder
-    console.log("fortsätt fyll i forumlär");
-  }
+    if (selectPaymentMethod.value == 'kort') {
+        validPersonnummer = true;
+    }
+    else {
+        validPersonnummer = personNummerInput.formNoValidate;
+    }
+    
+    if (validFirstName && validLastName && validEmail && validAddress && validCity && validZip && validPersonnummer && validGDPR) {
+        submitFormButton.removeAttribute('disabled');
+        submitFormButton.value = 'Klart! Klicka för att beställa!';
+        submitFormButton.style.backgroundColor = 'green';
+    }
+    else { 
+        submitFormButton.setAttribute('disabled', '');
+        submitFormButton.value = 'Fyll i formuläret för att fortsätta...';
+        submitFormButton.style.backgroundColor = 'gray';
+    }
 }
-
-//Kopplar funktioner till tryck/changes
-clearFormButton.addEventListener("click", deleteAllFormInput); //kopplar funktion till knapptryck av "rensa formulär"
-selectPaymentMethod.addEventListener("change", showSelectedPaymentMethod); //kopplar funktion till val av betalmetod
-personNummerInput.addEventListener("change", () => {
-  checkNumberIfOk(personNummerInput, 10, 1); //kopplar funktion till on change vid personnrfältet
-});
-zipcodeInput.addEventListener("change", () => {
-  checkNumberIfOk(zipcodeInput, 5, 0); //kopplar funktion till on change vid zipcode
-});
-firstNameInput.addEventListener("change", () => {
-  checkTextIfOk(firstNameInput, 0); //kopplar funktion till on change vid firstname
-});
-lastNameInput.addEventListener("change", () => {
-  checkTextIfOk(lastNameInput, 0); //kopplar funktion till on change vid firstname
-});
-cityNameInput.addEventListener("change", () => {
-  checkTextIfOk(cityNameInput, 0); //kopplar funktion till on change vid firstname
-});
-// emailInput.addEventListener('change', checkEmailIfOk);
-// addressInput.addEventListener('change', checkAddressIfOk);
 
 //funktion som loopar igenom alla input och sätter value till 0 = null
 function deleteAllFormInput() {
@@ -693,19 +678,28 @@ const checkNumberIfOk = function (inputField, numberAmount, errorField) {
 //funktion för a validera alla typer av nummer
 //inputField = vilket inputfält vi får datan ifrån
 //errorField = 0 för kontakt info 1 för betalinfo
-const checkTextIfOk = function (inputField, errorField) {
-  let letters = /^[a-zA-Z]+$/;
-  if (inputField.value.match(letters)) {
-    formErrorField[errorField].textContent = null;
-    inputField.style.color = "black";
-    inputField.formNoValidate = true; //skickar tillbaka true om det är godkänt
-  } else {
-    formErrorField[errorField].textContent = "Fel angivet " + inputField.name;
-    inputField.style.color = "red";
-    inputField.formNoValidate = false; //skickar tillbaka false om det är icke godkänt
-  }
-  checkValidForm(); //updaterar våra boolean variablar ifall saker är godkänt eller ej
-};
+const checkTextIfOk = function(inputField, errorField){    
+    const newErrorLine = document.createElement(`li`);
+    newErrorLine.setAttribute('data-operator', `${inputField.name}`);    
+    let letters = /^[a-zA-Z]+$/;      
+    if (inputField.value.match(letters)){
+        try {
+            newNewErrorLine = document.querySelector(`li[data-operator="${inputField.name}"`);
+            newNewErrorLine.remove();
+          }
+          catch(err) {
+          }
+        inputField.style.color = 'black';
+        inputField.formNoValidate = true; //skickar tillbaka true om det är godkänt
+    }
+    else {
+        formErrorField[errorField].appendChild(newErrorLine);
+        newErrorLine.innerHTML = `Fel angivet ${inputField.name} </li>`;
+        inputField.style.color = 'red';
+        inputField.formNoValidate = false; //skickar tillbaka false om det är icke godkänt
+    }
+    checkValidForm(); //updaterar våra boolean variablar ifall saker är godkänt eller ej
+}
 
 function checkEmailIfOk() {
   let varification = /^\S+@\S+\.\S+$/;
