@@ -512,26 +512,27 @@ christmasTheme();
 //-=JESPERS KOD=-//
 
 //hittar massa olika html element
-const allInputForms = document.querySelectorAll("input"); //hittar alla inputfält (får med några för kassan också)
-const clearFormButton = document.querySelector("#clearFormButton"); //hittar töm forumlär fältet
-const personNummerInput = document.querySelector("#personnum"); //hittar personnummerfältet
-const creditCardInputs = document.querySelectorAll(
-  'input[data-operator="creditcard"'
-); //hittar alla creditkortsfält
-const selectPaymentMethod = document.querySelector("#paymentMethod"); //hittar val av betalmetod
-const formErrorField = document.querySelectorAll(".errorInput"); //hittar fält för felmeddelanden
-const submitFormButton = document.querySelector("#sendOrder"); //hittar continue to... knappen
-const zipcodeInput = document.querySelector("#zip");
-const firstNameInput = document.querySelector("#fname");
-const lastNameInput = document.querySelector("#lname");
-const cityNameInput = document.querySelector("#city");
-const emailInput = document.querySelector("#email");
-const addressInput = document.querySelector("#adr");
-const gdprInput = document.querySelector("#approvedGDPR");
-const paymentFaktura = document.querySelector("#paymentFaktura");
-const userFormPayment = document.querySelector(".userForm");
-const goToCheckOut = document.querySelector("#goToCheckOut");
-const goToShop = document.querySelector("#buyMoreDonuts");
+
+const allInputForms = document.querySelectorAll('input'); //hittar alla inputfält (får med några för kassan också)
+const clearFormButton = document.querySelector('#clearFormButton'); //hittar töm forumlär fältet
+const personNummerInput = document.querySelector('#personnum'); //hittar personnummerfältet
+const creditCardInputs = document.querySelectorAll('input[data-operator="creditcard"'); //hittar alla creditkortsfält
+const selectPaymentMethod = document.querySelector('#paymentMethod'); //hittar val av betalmetod
+const formErrorField = document.querySelectorAll('.errorInput'); //hittar fält för felmeddelanden 
+const submitFormButton = document.querySelector('#sendOrder'); //hittar continue to... knappen
+const zipcodeInput = document.querySelector('#zip');
+const firstNameInput = document.querySelector('#fname');
+const lastNameInput = document.querySelector('#lname');
+const cityNameInput = document.querySelector('#city');
+const emailInput = document.querySelector('#email');
+const addressInput = document.querySelector('#adr');
+const gdprInput = document.querySelector('#approvedGDPR');
+const paymentFaktura = document.querySelector('#paymentFaktura');
+const userFormPayment = document.querySelector('.userForm');
+const goToCheckOut = document.querySelector('#goToCheckOut');
+const goToShop = document.querySelector('#buyMoreDonuts');
+const sortBar = document.querySelector('.sort-bar');
+
 let imgClickCounter = 2;
 
 //Funktion för bildspel per munk
@@ -552,13 +553,16 @@ const nextImage = (id) => {
 
 //funktion för betala och stänga shoppen
 function continueToPayment() {
-  shop.style.visibility = "hidden";
-  userFormPayment.style.visibility = "visible";
+
+    shop.style.display = 'none';
+    sortBar.style.display = 'none';
+    userFormPayment.style.display = 'flex';
 }
 
 function backToShop() {
-  shop.style.visibility = "visible";
-  userFormPayment.style.visibility = "hidden";
+    shop.style.display = '';
+    sortBar.style.display = '';
+    userFormPayment.style.display = 'none';
 }
 
 //funktion för dyrt för faktura
