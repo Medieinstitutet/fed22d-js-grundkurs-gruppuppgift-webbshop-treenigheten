@@ -1,5 +1,3 @@
-// ----- NIKOLAJ ----- //
-
 // ----- Array med munk information ----- //
 
 const donutArray = [
@@ -288,10 +286,6 @@ let donutRangeOne = document.querySelector("#donutPriceOne");
 let donutRangeTwo = document.querySelector("#donutPriceTwo");
 let donutRangeThree = document.querySelector("#donutPriceThree");
 
-// ----- NIKOLAJ ----- //
-
-// Evelinas kod
-
 const cart = document.querySelector("#donuts-cart");
 const totalPrice = document.querySelector("#totalPrice");
 const clearBtn = document.querySelector("#clearBtn");
@@ -303,7 +297,6 @@ const darkThemeBtn = document.querySelector("#darkThemeBtn");
 const buttonContainer = document.querySelector("#buttonContainer");
 const sortBtns = buttonContainer.getElementsByClassName("sortBtn");
 const discountBtn = document.querySelector("#discountBtn");
-
 
 let donutsAmount = 0;
 let total = 0;
@@ -509,30 +502,28 @@ function christmasTheme() {
 }
 christmasTheme();
 
-
-
-//-=JESPERS KOD=-//
-
 //hittar massa olika html element
 
-const allInputForms = document.querySelectorAll('input'); //hittar alla inputfält (får med några för kassan också)
-const clearFormButton = document.querySelector('#clearFormButton'); //hittar töm forumlär fältet
-const personNummerInput = document.querySelector('#personnum'); //hittar personnummerfältet
-const creditCardInputs = document.querySelectorAll('input[data-operator="creditcard"'); //hittar alla creditkortsfält
-const selectPaymentMethod = document.querySelector('#paymentMethod'); //hittar val av betalmetod
-const formErrorField = document.querySelectorAll('.errorInput'); //hittar fält för felmeddelanden 
-const submitFormButton = document.querySelector('#sendOrder'); //hittar continue to... knappen
-const zipcodeInput = document.querySelector('#zip');
-const firstNameInput = document.querySelector('#fname');
-const lastNameInput = document.querySelector('#lname');
-const cityNameInput = document.querySelector('#city');
-const emailInput = document.querySelector('#email');
-const addressInput = document.querySelector('#adr');
-const gdprInput = document.querySelector('#approvedGDPR');
-const paymentFaktura = document.querySelector('#paymentFaktura');
-const userFormPayment = document.querySelector('.userForm');
-const goToShop = document.querySelector('#buyMoreDonuts');
-const sortBar = document.querySelector('.sort-bar');
+const allInputForms = document.querySelectorAll("input"); //hittar alla inputfält (får med några för kassan också)
+const clearFormButton = document.querySelector("#clearFormButton"); //hittar töm forumlär fältet
+const personNummerInput = document.querySelector("#personnum"); //hittar personnummerfältet
+const creditCardInputs = document.querySelectorAll(
+  'input[data-operator="creditcard"'
+); //hittar alla creditkortsfält
+const selectPaymentMethod = document.querySelector("#paymentMethod"); //hittar val av betalmetod
+const formErrorField = document.querySelectorAll(".errorInput"); //hittar fält för felmeddelanden
+const submitFormButton = document.querySelector("#sendOrder"); //hittar continue to... knappen
+const zipcodeInput = document.querySelector("#zip");
+const firstNameInput = document.querySelector("#fname");
+const lastNameInput = document.querySelector("#lname");
+const cityNameInput = document.querySelector("#city");
+const emailInput = document.querySelector("#email");
+const addressInput = document.querySelector("#adr");
+const gdprInput = document.querySelector("#approvedGDPR");
+const paymentFaktura = document.querySelector("#paymentFaktura");
+const userFormPayment = document.querySelector(".userForm");
+const goToShop = document.querySelector("#buyMoreDonuts");
+const sortBar = document.querySelector(".sort-bar");
 
 let imgClickCounter = 2;
 
@@ -554,19 +545,19 @@ const nextImage = (id) => {
 
 //funktion för betala och stänga shoppen
 function continueToPayment() {
-  shop.style.display = 'none';
-  sortBar.style.display = 'none';
-  userFormPayment.style.display = 'flex';
-  clearBtn.style.display = 'none';
-  document.getElementById('userForm').scrollIntoView();
+  shop.style.display = "none";
+  sortBar.style.display = "none";
+  userFormPayment.style.display = "flex";
+  clearBtn.style.display = "none";
+  document.getElementById("userForm").scrollIntoView();
 }
 
 function backToShop() {
-    shop.style.display = '';
-    sortBar.style.display = '';
-    userFormPayment.style.display = 'none';
-    clearBtn.style.display = 'block';
-    document.getElementById('sortName').scrollIntoView();
+  shop.style.display = "";
+  sortBar.style.display = "";
+  userFormPayment.style.display = "none";
+  clearBtn.style.display = "block";
+  document.getElementById("sortName").scrollIntoView();
 }
 
 //funktion för dyrt för faktura
@@ -585,32 +576,39 @@ function noFaktura() {
 //boolean variablar för check av formulär
 //Alla godkända aktiveras knappen submit!
 function checkValidForm() {
-    let validFirstName = firstNameInput.formNoValidate;
-    let validLastName = lastNameInput.formNoValidate;
-    let validEmail = emailInput.formNoValidate;
-    let validAddress = addressInput.formNoValidate
-    let validCity = cityNameInput.formNoValidate;
-    let validZip = zipcodeInput.formNoValidate;
-    let validGDPR = gdprInput.checked;
-    let validPersonnummer;
+  let validFirstName = firstNameInput.formNoValidate;
+  let validLastName = lastNameInput.formNoValidate;
+  let validEmail = emailInput.formNoValidate;
+  let validAddress = addressInput.formNoValidate;
+  let validCity = cityNameInput.formNoValidate;
+  let validZip = zipcodeInput.formNoValidate;
+  let validGDPR = gdprInput.checked;
+  let validPersonnummer;
 
-    if (selectPaymentMethod.value == 'kort') {
-        validPersonnummer = true;
-    }
-    else {
-        validPersonnummer = personNummerInput.formNoValidate;
-    }
-    
-    if (validFirstName && validLastName && validEmail && validAddress && validCity && validZip && validPersonnummer && validGDPR) {
-        submitFormButton.removeAttribute('disabled');
-        submitFormButton.value = 'Klart! Klicka för att beställa!';
-        submitFormButton.style.backgroundColor = 'green';
-    }
-    else { 
-        submitFormButton.setAttribute('disabled', '');
-        submitFormButton.value = 'Fyll i formuläret för att fortsätta...';
-        submitFormButton.style.backgroundColor = 'gray';
-    }
+  if (selectPaymentMethod.value == "kort") {
+    validPersonnummer = true;
+  } else {
+    validPersonnummer = personNummerInput.formNoValidate;
+  }
+
+  if (
+    validFirstName &&
+    validLastName &&
+    validEmail &&
+    validAddress &&
+    validCity &&
+    validZip &&
+    validPersonnummer &&
+    validGDPR
+  ) {
+    submitFormButton.removeAttribute("disabled");
+    submitFormButton.value = "Klart! Klicka för att beställa!";
+    submitFormButton.style.backgroundColor = "green";
+  } else {
+    submitFormButton.setAttribute("disabled", "");
+    submitFormButton.value = "Fyll i formuläret för att fortsätta...";
+    submitFormButton.style.backgroundColor = "gray";
+  }
 }
 
 //funktion som loopar igenom alla input och sätter value till 0 = null
@@ -656,56 +654,55 @@ function showSelectedPaymentMethod() {
 //numberAmount = antal tecken/siffror som är godkänt
 //errorField = 0 för kontakt info 1 för betalinfo
 const checkNumberIfOk = function (inputField, numberAmount, errorField) {
-    const newErrorLine = document.createElement(`li`);
-    newErrorLine.setAttribute('data-operator', `${inputField.name}`);
-    let numbers = /^[0-9]+$/;
-    if (
-        inputField.value.match(numbers) &&
-        inputField.value.length == numberAmount
-    ) {
-        try {
-            newNewErrorLine = document.querySelector(`li[data-operator="${inputField.name}"`);
-            newNewErrorLine.remove();
-          }
-          catch(err) {
-          }
-        inputField.style.color = "black";
-        inputField.formNoValidate = true; //skickar tillbaka true om det är godkänt
-    } else {
-        formErrorField[errorField].appendChild(newErrorLine);
-        newErrorLine.innerHTML = `Fel angivet ${inputField.name} </li>`;
-        inputField.style.color = "red";
-        inputField.formNoValidate = false; //skickar tillbaka false om det är icke godkänt
-    }
-    checkValidForm(); //updaterar våra boolean variablar ifall saker är godkänt eller ej
+  const newErrorLine = document.createElement(`li`);
+  newErrorLine.setAttribute("data-operator", `${inputField.name}`);
+  let numbers = /^[0-9]+$/;
+  if (
+    inputField.value.match(numbers) &&
+    inputField.value.length == numberAmount
+  ) {
+    try {
+      newNewErrorLine = document.querySelector(
+        `li[data-operator="${inputField.name}"`
+      );
+      newNewErrorLine.remove();
+    } catch (err) {}
+    inputField.style.color = "black";
+    inputField.formNoValidate = true; //skickar tillbaka true om det är godkänt
+  } else {
+    formErrorField[errorField].appendChild(newErrorLine);
+    newErrorLine.innerHTML = `Fel angivet ${inputField.name} </li>`;
+    inputField.style.color = "red";
+    inputField.formNoValidate = false; //skickar tillbaka false om det är icke godkänt
+  }
+  checkValidForm(); //updaterar våra boolean variablar ifall saker är godkänt eller ej
 };
 
 //funktion för a validera alla typer av nummer
 //inputField = vilket inputfält vi får datan ifrån
 //errorField = 0 för kontakt info 1 för betalinfo
-const checkTextIfOk = function(inputField, errorField, regexSet){    
-    const newErrorLine = document.createElement(`li`);
-    newErrorLine.setAttribute('data-operator', `${inputField.name}`);    
-    let validation = regexSet;
-    console.log(validation)      
-    if (inputField.value.match(validation)){
-        try {
-            newNewErrorLine = document.querySelector(`li[data-operator="${inputField.name}"`);
-            newNewErrorLine.remove();
-          }
-          catch(err) {
-          }
-        inputField.style.color = 'black';
-        inputField.formNoValidate = true; //skickar tillbaka true om det är godkänt
-    }
-    else {
-        formErrorField[errorField].appendChild(newErrorLine);
-        newErrorLine.innerHTML = `Fel angivet ${inputField.name} </li>`;
-        inputField.style.color = 'red';
-        inputField.formNoValidate = false; //skickar tillbaka false om det är icke godkänt
-    }
-    checkValidForm(); //updaterar våra boolean variablar ifall saker är godkänt eller ej
-}
+const checkTextIfOk = function (inputField, errorField, regexSet) {
+  const newErrorLine = document.createElement(`li`);
+  newErrorLine.setAttribute("data-operator", `${inputField.name}`);
+  let validation = regexSet;
+  console.log(validation);
+  if (inputField.value.match(validation)) {
+    try {
+      newNewErrorLine = document.querySelector(
+        `li[data-operator="${inputField.name}"`
+      );
+      newNewErrorLine.remove();
+    } catch (err) {}
+    inputField.style.color = "black";
+    inputField.formNoValidate = true; //skickar tillbaka true om det är godkänt
+  } else {
+    formErrorField[errorField].appendChild(newErrorLine);
+    newErrorLine.innerHTML = `Fel angivet ${inputField.name} </li>`;
+    inputField.style.color = "red";
+    inputField.formNoValidate = false; //skickar tillbaka false om det är icke godkänt
+  }
+  checkValidForm(); //updaterar våra boolean variablar ifall saker är godkänt eller ej
+};
 
 // = = = = Kopplar funktioner till tryck/changes = = = = //
 clearFormButton.addEventListener("click", deleteAllFormInput); //kopplar funktion till knapptryck av "rensa formulär"
@@ -726,16 +723,15 @@ cityNameInput.addEventListener("change", () => {
   checkTextIfOk(cityNameInput, 0, /^[a-zA-Z]+$/); //kopplar funktion till on change vid firstname
 });
 emailInput.addEventListener("change", () => {
-    checkTextIfOk(emailInput, 0, /^\S+@\S+\.\S+$/); //kopplar funktion till on change vid firstname
-  });
+  checkTextIfOk(emailInput, 0, /^\S+@\S+\.\S+$/); //kopplar funktion till on change vid firstname
+});
 addressInput.addEventListener("change", () => {
-    checkTextIfOk(addressInput, 0, /^\s*\S+(?:\s+\S+){1}/); //kopplar funktion till on change vid firstname
-  });
+  checkTextIfOk(addressInput, 0, /^\s*\S+(?:\s+\S+){1}/); //kopplar funktion till on change vid firstname
+});
 gdprInput.addEventListener("change", checkValidForm);
 // submitFormButton.addEventListener('click', sendDonutOrder);
 goToCheckOut.addEventListener("click", continueToPayment);
 goToShop.addEventListener("click", backToShop);
-
 
 // popupruta med leveranstid och beställningsbekräftelse
 const deliveryBtn = document.querySelector("#sendOrder");
