@@ -303,7 +303,7 @@ const darkThemeBtn = document.querySelector("#darkThemeBtn");
 const buttonContainer = document.querySelector("#buttonContainer");
 const sortBtns = buttonContainer.getElementsByClassName("sortBtn");
 const discountBtn = document.querySelector("#discountBtn");
-const goToCheckOut = document.querySelector("#goToCheckOut");
+
 
 let donutsAmount = 0;
 let total = 0;
@@ -509,13 +509,7 @@ function christmasTheme() {
 }
 christmasTheme();
 
-// ta bort rensa varukorg-knapp när man går till betalning
 
-goToCheckOut.addEventListener("click", removeBin);
-
-function removeBin(){
-  clearBtn.style.display = 'none';
-}
 
 //-=JESPERS KOD=-//
 
@@ -560,16 +554,19 @@ const nextImage = (id) => {
 
 //funktion för betala och stänga shoppen
 function continueToPayment() {
-
-    shop.style.display = 'none';
-    sortBar.style.display = 'none';
-    userFormPayment.style.display = 'flex';
+  shop.style.display = 'none';
+  sortBar.style.display = 'none';
+  userFormPayment.style.display = 'flex';
+  clearBtn.style.display = 'none';
+  document.getElementById('userForm').scrollIntoView();
 }
 
 function backToShop() {
     shop.style.display = '';
     sortBar.style.display = '';
     userFormPayment.style.display = 'none';
+    clearBtn.style.display = 'block';
+    document.getElementById('sortName').scrollIntoView();
 }
 
 //funktion för dyrt för faktura
